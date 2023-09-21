@@ -9,11 +9,14 @@
     ],
     "license": "None",
     "bin": [
-        "bin/brain-games"
+        "bin/brain-games",
+        "bin/brain-even"
     ],
     "autoload": {
         "files": [
-            "src/Cli.php"
+            "src/WelcomePlayer.php",
+            "src/Cli.php",
+            "src/IsEvenGame.php"
         ]
     },
     "require": {
