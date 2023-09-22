@@ -5,6 +5,11 @@ namespace BrainGames\Engine;
 use function cli\line;
 use function cli\prompt;
 
+function getRandomNumber(int $max = 0, int $min = 50): int
+{
+    return rand($min, $max);
+}
+
 function askQuestion(int|string $string): void
 {
     line("Question: {$string}");
