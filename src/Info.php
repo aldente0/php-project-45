@@ -17,6 +17,7 @@ function showRules(string $gameName): void
 {
     match ($gameName) {
         'brain-even' => line('Answer "yes" if the number is even, otherwise answer "no".'),
+        'brain-calc' => line('What is the result of the expression?'),
     };
 }
 
