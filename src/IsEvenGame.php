@@ -4,34 +4,30 @@ namespace BrainGames\IsEvenGame;
 
 use function BrainGames\WelcomePlayer\welcomePlayer;
 use function cli\line;
-use function cli\prompt;
+use function BrainGames\Engine\answerTheQuestion;
+use function BrainGames\Engine\askQuestion;
+use function BrainGames\Engine\checkAnswer;
+use function BrainGames\Engine\isContinueGame;
 
-function isEvenGame(): void
-{
-    $name = welcomePlayer();
-    showRules();
-    $quantityCorrectAnswer = play();
-    showResult($quantityCorrectAnswer, $name);
-}
-
-function play(): int
+function isEvenGame(): int
 {
     $quantityCorrectAnswer = 0;
+    $isCorrectAnswer = true;
 
     do {
         $number = getRandomNumber();
-        line('Question: %d', $number);
-        $answer = prompt('Your answer');
+        askQuestion($number);
+        $answer = answerTheQuestion();
         $expected = isEven($number) ? 'yes' : 'no';
-        $isCorrect = checkAnswer($expected, $answer);
+        $isCorrectAnswer = checkAnswer($expected, $answer);
 
-        if ($isCorrect) {
+        if ($isCorrectAnswer) {
             $quantityCorrectAnswer++;
             line('Correct!');
         } else {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expected);
         }
-    } while ($quantityCorrectAnswer < 3 && $isCorrect);
+    } while (isContinueGame($quantityCorrectAnswer, $isCorrectAnswer));
 
     return $quantityCorrectAnswer;
 }
@@ -44,19 +40,16 @@ function isEven(int $number): bool
 function getRandomNumber(): int
 {
     $min = 1;
-    $max = 20;
+    $max = 50;
 
     return rand($min, $max);
 }
 
-function checkAnswer(string $expected, string $actual): bool
+function showRules(string $gameName): void
 {
-    return $expected === $actual ? true : false;
-}
-
-function showRules(): void
-{
-    line('Answer "yes" if the number is even, otherwise answer "no".');
+    match ($gameName) {
+        'brain-even' => line('Answer "yes" if the number is even, otherwise answer "no".'),
+    };
 }
 
 function showResult(int $quantityCorrectAnswer, $name): void
