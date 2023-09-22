@@ -17,7 +17,8 @@
             "src/Cli.php",
             "src/IsEvenGame.php",
             "src/Engine.php",
-            "src/Info.php"
+            "src/Info.php",
+            "src/CalcGame.php"
         ]
     },
     "require": {
