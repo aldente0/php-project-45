@@ -3,9 +3,9 @@
 
 const GAME_NAME = 'brain-even';
 use function BrainGames\IsEvenGame\isEvenGame;
-use function BrainGames\WelcomePlayer\welcomePlayer;
-use function BrainGames\IsEvenGame\showRules;
-use function BrainGames\IsEvenGame\showResult;
+use function BrainGames\Info\welcomePlayer;
+use function BrainGames\Info\showRules;
+use function BrainGames\Info\showResult;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
