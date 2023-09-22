@@ -15,7 +15,7 @@ function answerTheQuestion(): int|string
     return prompt('Your answer');
 }
 
-function isContinueGame(int $quantityCorrectAnswer, bool $isCorrectAnswer):bool
+function isContinueGame(int $quantityCorrectAnswer, bool $isCorrectAnswer): bool
 {
     return $quantityCorrectAnswer < 3 && $isCorrectAnswer;
 }
