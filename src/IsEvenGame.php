@@ -44,19 +44,3 @@ function getRandomNumber(): int
 
     return rand($min, $max);
 }
-
-function showRules(string $gameName): void
-{
-    match ($gameName) {
-        'brain-even' => line('Answer "yes" if the number is even, otherwise answer "no".'),
-    };
-}
-
-function showResult(int $quantityCorrectAnswer, $name): void
-{
-    if ($quantityCorrectAnswer === 3) {
-        line('Congratulations, %s!', $name);
-    } else {
-        line("Let's try again, %s!", $name);
-    }
-}
