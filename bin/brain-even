@@ -2,7 +2,7 @@
 <?php
 
 const GAME_NAME = 'brain-even';
-use function BrainGames\IsEvenGame\isEvenGame;
+use function BrainGames\IsEvenGame\startIsEvenGame;
 use function BrainGames\Info\welcomePlayer;
 use function BrainGames\Info\showRules;
 use function BrainGames\Info\showResult;
@@ -11,5 +11,5 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $name = welcomePlayer();
 showRules(GAME_NAME);
-$quantityCorrectAnswer = isEvenGame();
+$quantityCorrectAnswer = startIsEvenGame();
 showResult($quantityCorrectAnswer, $name);
