@@ -16,7 +16,8 @@
         "files": [
             "src/WelcomePlayer.php",
             "src/Cli.php",
-            "src/IsEvenGame.php"
+            "src/IsEvenGame.php",
+            "src/Engine.php"
         ]
     },
     "require": {
