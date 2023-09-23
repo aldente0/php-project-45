@@ -8,7 +8,8 @@ use function BrainGames\Engine\checkAnswer;
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\isContinueGame;
 
-function calcExpression($firstOperand, $secondOperand, string $operation) {
+function calcExpression(int $firstOperand, int $secondOperand, string $operation): int
+{
     return match ($operation) {
         '+' => $firstOperand + $secondOperand,
         '-' => $firstOperand - $secondOperand,
