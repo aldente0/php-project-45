@@ -4,6 +4,9 @@ namespace BrainGames\Info;
 use function cli\line;
 use function cli\prompt;
 
+const BRAIN_EVEN_RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
+const BRAIN_CALC_RULES = 'What is the result of the expression?';
+
 function welcomePlayer(): string
 {
     line("Welcome to the Brain Games!");
@@ -16,8 +19,8 @@ function welcomePlayer(): string
 function showRules(string $gameName): void
 {
     match ($gameName) {
-        'brain-even' => line('Answer "yes" if the number is even, otherwise answer "no".'),
-        'brain-calc' => line('What is the result of the expression?'),
+        'brain-even' => line(BRAIN_EVEN_RULES),
+        'brain-calc' => line(BRAIN_CALC_RULES),
     };
 }
 
