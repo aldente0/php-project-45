@@ -4,14 +4,14 @@
 namespace BrainGames\Games;
 
 use function cli\line;
-use function BrainGames\CalcGame\calcExpression;
-use function BrainGames\CalcGame\getRandomOperation;
 use function BrainGames\Engine\answerTheQuestion;
 use function BrainGames\Engine\askQuestion;
 use function BrainGames\Engine\checkAnswer;
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\isContinueGame;
-use function BrainGames\IsEvenGame\isEven;
+use function BrainGames\Helpers\CalcGame\calcExpression;
+use function BrainGames\Helpers\CalcGame\getRandomOperation;
+use function BrainGames\Helpers\IsEvenGame\isEven;
 
 function startCalcGame(): int
 {

@@ -15,10 +15,10 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/IsEvenGame.php",
+            "src/Helpers/IsEvenGameHelpers.php",
             "src/Engine.php",
             "src/Info.php",
-            "src/CalcGame.php",
+            "src/Helpers/CalcGameHelpers.php",
             "src/Games"
         ]
     },

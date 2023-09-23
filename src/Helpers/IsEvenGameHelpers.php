@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\IsEvenGame;
+namespace BrainGames\Helpers\IsEvenGame;
 
 use function cli\line;
 use function BrainGames\Engine\answerTheQuestion;

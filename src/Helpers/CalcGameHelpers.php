@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\CalcGame;
+namespace BrainGames\Helpers\CalcGame;
 
 use function cli\line;
 use function BrainGames\Engine\answerTheQuestion;
