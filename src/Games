@@ -7,10 +7,12 @@ use function cli\line;
 use function BrainGames\Engine\answerTheQuestion;
 use function BrainGames\Engine\askQuestion;
 use function BrainGames\Engine\checkAnswer;
+use function BrainGames\Engine\createQuestion;
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\isContinueGame;
 use function BrainGames\Helpers\CalcGame\calcExpression;
 use function BrainGames\Helpers\CalcGame\getRandomOperation;
+use function BrainGames\Helpers\FindGCDGame\getGCD;
 use function BrainGames\Helpers\IsEvenGame\isEven;
 
 function startCalcGame(): int
@@ -28,7 +30,7 @@ function startCalcGame(): int
             $secondOperand = getRandomNumber();
         }
 
-        $expression = implode(" ", [$firstOperand, $operation, $secondOperand]);
+        $expression = createQuestion($firstOperand, $operation, $secondOperand);
         askQuestion($expression);
         $answer = answerTheQuestion();
         $expected = calcExpression($firstOperand, $secondOperand, $operation);
@@ -52,6 +54,7 @@ function startIsEvenGame(): int
 
     do {
         $number = getRandomNumber();
+
         askQuestion($number);
         $answer = answerTheQuestion();
         $expected = isEven($number) ? 'yes' : 'no';
