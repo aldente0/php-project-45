@@ -1,0 +1,69 @@
+#!/usr/bin/env php 
+<?php
+
+namespace BrainGames\Games;
+
+use function cli\line;
+use function BrainGames\CalcGame\calcExpression;
+use function BrainGames\CalcGame\getRandomOperation;
+use function BrainGames\Engine\answerTheQuestion;
+use function BrainGames\Engine\askQuestion;
+use function BrainGames\Engine\checkAnswer;
+use function BrainGames\Engine\getRandomNumber;
+use function BrainGames\Engine\isContinueGame;
+use function BrainGames\IsEvenGame\isEven;
+
+function startCalcGame(): int
+{
+    $quantityCorrectAnswers = 0;
+    $isCorrectAnswer = true;
+    
+    do {
+        $firstOperand = getRandomNumber();
+        $operation = getRandomOperation();
+
+        if ($operation === '*') {
+            $secondOperand = getRandomNumber(0, 10);
+        } else {
+            $secondOperand = getRandomNumber();
+        }
+
+        $expression = implode(" ", [$firstOperand, $operation, $secondOperand]);
+        askQuestion($expression);
+        $answer = answerTheQuestion();
+        $expected = calcExpression($firstOperand, $secondOperand, $operation);
+        $isCorrectAnswer = checkAnswer($expected, $answer);
+
+        if ($isCorrectAnswer) {
+            $quantityCorrectAnswers++;
+            line('Correct!');
+        } else {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expected);
+        }
+    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+
+    return $quantityCorrectAnswers;
+}
+
+function startIsEvenGame(): int
+{
+    $quantityCorrectAnswers = 0;
+    $isCorrectAnswer = true;
+
+    do {
+        $number = getRandomNumber();
+        askQuestion($number);
+        $answer = answerTheQuestion();
+        $expected = isEven($number) ? 'yes' : 'no';
+        $isCorrectAnswer = checkAnswer($expected, $answer);
+
+        if ($isCorrectAnswer) {
+            $quantityCorrectAnswers++;
+            line('Correct!');
+        } else {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expected);
+        }
+    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+
+    return $quantityCorrectAnswers;
+}

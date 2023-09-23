@@ -2,7 +2,8 @@
 <?php
 
 const GAME_NAME = 'brain-calc';
-use function BrainGames\CalcGame\startCalcGame;
+
+use function BrainGames\Games\startCalcGame;
 use function BrainGames\Info\welcomePlayer;
 use function BrainGames\Info\showRules;
 use function BrainGames\Info\showResult;

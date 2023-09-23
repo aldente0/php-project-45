@@ -2,7 +2,8 @@
 <?php
 
 const GAME_NAME = 'brain-even';
-use function BrainGames\IsEvenGame\startIsEvenGame;
+
+use function BrainGames\Games\startIsEvenGame;
 use function BrainGames\Info\welcomePlayer;
 use function BrainGames\Info\showRules;
 use function BrainGames\Info\showResult;
