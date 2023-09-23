@@ -18,7 +18,8 @@
             "src/IsEvenGame.php",
             "src/Engine.php",
             "src/Info.php",
-            "src/CalcGame.php"
+            "src/CalcGame.php",
+            "src/Games"
         ]
     },
     "require": {
