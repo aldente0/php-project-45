@@ -15,6 +15,11 @@ function askQuestion(int|string $string): void
     line("Question: {$string}");
 }
 
+function createQuestion(...$args): string
+{
+    return implode(' ', $args);
+}
+
 function answerTheQuestion(): int|string
 {
     return prompt('Your answer');
