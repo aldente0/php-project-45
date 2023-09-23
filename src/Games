@@ -70,3 +70,31 @@ function startIsEvenGame(): int
 
     return $quantityCorrectAnswers;
 }
+
+function startFindGCDGame(): int
+{
+    $quantityCorrectAnswers = 0;
+    $isCorrectAnswer = true;
+
+    do {
+        $multiplier = getRandomNumber(2, 5);
+        $firstNumber = getRandomNumber(1, 50) * $multiplier;
+        $secondNumber = getRandomNumber(1, 50) * $multiplier;
+
+        $gcd = getGCD($firstNumber, $secondNumber);
+        
+        $numbersRow = createQuestion($firstNumber, $secondNumber);
+        askQuestion($numbersRow);
+        $answer = answerTheQuestion();
+        $isCorrectAnswer = checkAnswer($gcd, $answer);
+
+        if ($isCorrectAnswer) {
+            $quantityCorrectAnswers++;
+            line('Correct!');
+        } else {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $gcd);
+        }
+    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+
+    return $quantityCorrectAnswers;
+}
