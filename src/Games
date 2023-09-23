@@ -81,7 +81,7 @@ function startFindGCDGame(): int
         $firstNumber = getRandomNumber(1, 50) * $multiplier;
         $secondNumber = getRandomNumber(1, 50) * $multiplier;
 
-        $gcd = getGCD($firstNumber, $secondNumber);
+        $gcd = getGCD($firstNumber, $secondNumber, $multiplier);
         
         $numbersRow = createQuestion($firstNumber, $secondNumber);
         askQuestion($numbersRow);
