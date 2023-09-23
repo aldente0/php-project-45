@@ -7,6 +7,7 @@ use function cli\prompt;
 
 const BRAIN_EVEN_RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
 const BRAIN_CALC_RULES = 'What is the result of the expression?';
+const BRAIN_GSD_RULES = 'Find the greatest common divisor of given numbers.';
 
 function welcomePlayer(): string
 {
@@ -22,6 +23,7 @@ function showRules(string $gameName): void
     match ($gameName) {
         'brain-even' => line(BRAIN_EVEN_RULES),
         'brain-calc' => line(BRAIN_CALC_RULES),
+        'brain-gcd' => line(BRAIN_GSD_RULES),
     };
 }
 
