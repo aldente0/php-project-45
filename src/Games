@@ -10,10 +10,40 @@ use function BrainGames\Engine\checkAnswer;
 use function BrainGames\Engine\createQuestion;
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\isContinueGame;
+use function BrainGames\Helpers\BrainProgressionHelpers\getExcludedNumber;
+use function BrainGames\Helpers\BrainProgressionHelpers\getProgression;
 use function BrainGames\Helpers\CalcGame\calcExpression;
 use function BrainGames\Helpers\CalcGame\getRandomOperation;
 use function BrainGames\Helpers\FindGCDGame\getGCD;
 use function BrainGames\Helpers\IsEvenGame\isEven;
+
+function startBrainExpression(): int
+{
+    $quantityCorrectAnswers = 0;
+    $isCorrectAnswer = true;
+    
+    do {
+        $progressionLength = getRandomNumber(5, 10);
+        $increment = getRandomNumber(1, 10);
+        $excludedNumberIndex = getRandomNumber(0, $progressionLength - 1);
+        $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
+        $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
+
+        $expression = createQuestion($progression);
+        askQuestion($expression);
+        $answer = answerTheQuestion();
+        $isCorrectAnswer = checkAnswer($excludedNumber, $answer);
+
+        if ($isCorrectAnswer) {
+            $quantityCorrectAnswers++;
+            line('Correct!');
+        } else {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $excludedNumber);
+        }
+    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+
+    return $quantityCorrectAnswers;
+}
 
 function startCalcGame(): int
 {
