@@ -7,3 +7,5 @@ Asciinema of running brain-even game and installing dependencies - https://ascii
 Asciinema of running brain-calc game - https://asciinema.org/a/609836
 
 Asciinema of running brain-gcd game - https://asciinema.org/a/609866
+
+Asciinema of running brain-progression game - https://asciinema.org/a/610003
