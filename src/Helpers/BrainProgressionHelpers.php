@@ -8,7 +8,7 @@ function getProgression(int $progressionLength, int $excludeNumberIndex, $increm
 {
     $last = getRandomNumber(1, 20);
     $increment = getRandomNumber(1, 10);
-    $progression[] = $last;
+    $progression[] = (string)$last;
 
     for ($i = 1; $i < $progressionLength; $i++) {
         if ($i === $excludeNumberIndex) {
