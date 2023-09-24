@@ -17,11 +17,12 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/Helpers/IsEvenGameHelpers.php",
+            "src/Helpers/BrainEvenHelpers.php",
+            "src/Helpers/BrainGCDHelpers.php",
+            "src/Helpers/BrainCalcHelpers.php",
+            "src/Helpers/BrainProgressionHelpers.php",
             "src/Engine.php",
             "src/Info.php",
-            "src/Helpers/FindGCDGameHelpers.php",
-            "src/Helpers/CalcGameHelpers.php",
             "src/Games"
         ]
     },
