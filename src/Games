@@ -12,10 +12,10 @@ use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\isContinueGame;
 use function BrainGames\Helpers\BrainProgressionHelpers\getExcludedNumber;
 use function BrainGames\Helpers\BrainProgressionHelpers\getProgression;
-use function BrainGames\Helpers\CalcGame\calcExpression;
-use function BrainGames\Helpers\CalcGame\getRandomOperation;
-use function BrainGames\Helpers\FindGCDGame\getGCD;
-use function BrainGames\Helpers\IsEvenGame\isEven;
+use function BrainGames\Helpers\BrainCalcHelpers\calcExpression;
+use function BrainGames\Helpers\BrainCalcHelpers\getRandomOperation;
+use function BrainGames\Helpers\BrainGCDHelpers\getGCD;
+use function BrainGames\Helpers\BrainEvenHelpers\isEven;
 
 function startBrainExpression(): int
 {
