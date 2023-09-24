@@ -7,17 +7,16 @@ use function BrainGames\Engine\getRandomNumber;
 function getProgression(int $progressionLength, int $excludeNumberIndex, $increment): array
 {
     $last = getRandomNumber(1, 20);
-    $increment = getRandomNumber(1, 10);
-    $progression[] = (string)$last;
 
-    for ($i = 1; $i < $progressionLength; $i++) {
+    for ($i = 0; $i < $progressionLength; $i++) {
+        $last += $increment;
+
         if ($i === $excludeNumberIndex) {
-            $progression[] = '..';
+            $progression[$i] = '..';
             continue;
         }
 
-        $last += $increment;
-        $progression[] = (string)$last;
+        $progression[$i] = (string)$last;
     }
 
     return $progression;
