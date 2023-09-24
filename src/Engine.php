@@ -17,6 +17,10 @@ function askQuestion(int|string $string): void
 
 function createQuestion(...$args): string
 {
+    if (is_array($args[0])) {
+        $args = [...$args];
+    }
+
     return implode(' ', $args);
 }
 
