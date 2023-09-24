@@ -45,7 +45,7 @@ function startBrainExpression(): int
     return $quantityCorrectAnswers;
 }
 
-function startCalcGame(): int
+function startBrainCalc(): int
 {
     $quantityCorrectAnswers = 0;
     $isCorrectAnswer = true;
@@ -77,7 +77,7 @@ function startCalcGame(): int
     return $quantityCorrectAnswers;
 }
 
-function startIsEvenGame(): int
+function startBrainEven(): int
 {
     $quantityCorrectAnswers = 0;
     $isCorrectAnswer = true;
@@ -101,7 +101,7 @@ function startIsEvenGame(): int
     return $quantityCorrectAnswers;
 }
 
-function startFindGCDGame(): int
+function startBrainGCD(): int
 {
     $quantityCorrectAnswers = 0;
     $isCorrectAnswer = true;

@@ -3,7 +3,7 @@
 
 const GAME_NAME = 'brain-gcd';
 
-use function BrainGames\Games\startFindGCDGame;
+use function BrainGames\Games\startBrainGCD;
 use function BrainGames\Info\welcomePlayer;
 use function BrainGames\Info\showRules;
 use function BrainGames\Info\showResult;
@@ -12,5 +12,5 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $name = welcomePlayer();
 showRules(GAME_NAME);
-$quantityCorrectAnswer = startFindGCDGame();
+$quantityCorrectAnswer = startBrainGCD();
 showResult($quantityCorrectAnswer, $name);
