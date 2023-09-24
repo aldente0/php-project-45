@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\Helpers\FindGCDGame;
+namespace BrainGames\Helpers\BrainGCDHelpers;
 
 function getGCD(int $num1, int $num2, int $minGCD): int
 {

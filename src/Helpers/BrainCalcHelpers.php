@@ -1,6 +1,6 @@
 <?php
 
-namespace BrainGames\Helpers\CalcGame;
+namespace BrainGames\Helpers\BrainCalcHelpers;
 
 function calcExpression(int $firstOperand, int $secondOperand, string $operation): int
 {
