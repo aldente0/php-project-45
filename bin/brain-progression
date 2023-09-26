@@ -3,7 +3,7 @@
 
 const GAME_NAME = 'brain-progression';
 
-use function BrainGames\Games\startBrainExpression;
+use function BrainGames\Games\startBrainProgression;
 use function BrainGames\Info\welcomePlayer;
 use function BrainGames\Info\showRules;
 use function BrainGames\Info\showResult;
@@ -12,5 +12,5 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $name = welcomePlayer();
 showRules(GAME_NAME);
-$quantityCorrectAnswer = startBrainExpression();
+$quantityCorrectAnswer = startBrainProgression();
 showResult($quantityCorrectAnswer, $name);
