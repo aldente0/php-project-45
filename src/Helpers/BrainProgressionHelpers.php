@@ -4,9 +4,10 @@ namespace BrainGames\Helpers\BrainProgressionHelpers;
 
 use function BrainGames\Engine\getRandomNumber;
 
-function getProgression(int $progressionLength, int $excludeNumberIndex, $increment): array
+function getProgression(int $progressionLength, int $excludeNumberIndex, int $increment): array
 {
     $last = getRandomNumber(1, 20);
+    $progression = [];
 
     for ($i = 0; $i < $progressionLength; $i++) {
         $last += $increment;
