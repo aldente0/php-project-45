@@ -16,6 +16,7 @@ use function BrainGames\Helpers\BrainCalcHelpers\calcExpression;
 use function BrainGames\Helpers\BrainCalcHelpers\getRandomOperation;
 use function BrainGames\Helpers\BrainGCDHelpers\getGCD;
 use function BrainGames\Helpers\BrainEvenHelpers\isEven;
+use function BrainGames\Helpers\BrainPrimeHelpers\isPrime;
 
 function startBrainExpression(): int
 {
@@ -88,6 +89,30 @@ function startBrainEven(): int
         askQuestion($number);
         $answer = answerTheQuestion();
         $expected = isEven($number) ? 'yes' : 'no';
+        $isCorrectAnswer = checkAnswer($expected, $answer);
+
+        if ($isCorrectAnswer) {
+            $quantityCorrectAnswers++;
+            line('Correct!');
+        } else {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expected);
+        }
+    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+
+    return $quantityCorrectAnswers;
+}
+
+function startBrainPrime(): int
+{
+    $quantityCorrectAnswers = 0;
+    $isCorrectAnswer = true;
+
+    do {
+        $number = getRandomNumber(2, 100);
+        $expected = isPrime($number) ? 'yes' : 'no';
+
+        askQuestion($number);
+        $answer = answerTheQuestion();
         $isCorrectAnswer = checkAnswer($expected, $answer);
 
         if ($isCorrectAnswer) {
