@@ -10,7 +10,6 @@ use function BrainGames\Helpers\BrainPrimeHelpers\isPrime;
 function startBrainPrime(): int
 {
     $quantityCorrectAnswers = 0;
-    $isCorrectAnswer = true;
 
     do {
         $number = getRandomNumber(2, 100);

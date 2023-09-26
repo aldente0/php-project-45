@@ -10,7 +10,6 @@ use function BrainGames\Helpers\BrainEvenHelpers\isEven;
 function startBrainEven(): int
 {
     $quantityCorrectAnswers = 0;
-    $isCorrectAnswer = true;
 
     do {
         $number = getRandomNumber();

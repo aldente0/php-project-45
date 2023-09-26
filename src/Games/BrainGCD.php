@@ -10,7 +10,6 @@ use function BrainGames\Helpers\BrainGCDHelpers\getGCD;
 function startBrainGCD(): int
 {
     $quantityCorrectAnswers = 0;
-    $isCorrectAnswer = true;
 
     do {
         $multiplier = getRandomNumber(2, 5);
