@@ -3,7 +3,7 @@
 
 const GAME_NAME = 'brain-prime';
 
-use function BrainGames\Games\startBrainPrime;
+use function BrainGames\Games\BrainPrime\startBrainPrime;
 use function BrainGames\Info\welcomePlayer;
 use function BrainGames\Info\showRules;
 use function BrainGames\Info\showResult;

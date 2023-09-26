@@ -26,7 +26,11 @@
             "src/Helpers/BrainPrimeHelpers.php",
             "src/Engine.php",
             "src/Info.php",
-            "src/Games"
+            "src/Games/BrainCalc.php",
+            "src/Games/BrainEven.php",
+            "src/Games/BrainGCD.php",
+            "src/Games/BrainProgression.php",
+            "src/Games/BrainPrime.php"
         ]
     },
     "require": {
