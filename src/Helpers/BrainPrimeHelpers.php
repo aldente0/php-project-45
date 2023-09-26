@@ -5,6 +5,7 @@ namespace BrainGames\Helpers\BrainPrimeHelpers;
 function isPrime(int $number): bool
 {
     $isPrime = true;
+    $numberSQRT = getNumberSQRT($number);
 
     for ($i = 2; $isPrime && $i < $number; $i++) {
         if ($number % $i === 0) {
@@ -13,4 +14,9 @@ function isPrime(int $number): bool
     }
 
     return $isPrime;
+}
+
+function getNumberSQRT(int $number): int
+{
+    return ceil(sqrt($number));
 }
