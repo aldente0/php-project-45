@@ -2,6 +2,8 @@
 <?php
 
 const GAME_NAME = 'brain-prime';
+
+use function BrainGames\Games\startBrainPrime;
 use function BrainGames\Info\welcomePlayer;
 use function BrainGames\Info\showRules;
 use function BrainGames\Info\showResult;
@@ -10,5 +12,5 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $name = welcomePlayer();
 showRules(GAME_NAME);
-//$quantityCorrectAnswer = startBrainGCD();
-//showResult($quantityCorrectAnswer, $name);
+$quantityCorrectAnswer = startBrainPrime();
+showResult($quantityCorrectAnswer, $name);
