@@ -15,7 +15,7 @@ function printQuestion(int|string $string): void
     line("Question: {$string}");
 }
 
-function createQuestion(int|array ...$args): string
+function createQuestion(...$args): string
 {
     if (is_array($args[0])) {
         $args = [...$args[0]];
@@ -24,7 +24,7 @@ function createQuestion(int|array ...$args): string
     return implode(' ', $args);
 }
 
-function answerTheQuestion(): string
+function answerTheQuestion(): int|string
 {
     return prompt('Your answer');
 }
@@ -34,7 +34,7 @@ function isContinueGame(int $quantityCorrectAnswers, bool $isCorrectAnswer): boo
     return $quantityCorrectAnswers < 3 && $isCorrectAnswer;
 }
 
-function checkAnswer(string|int $expected, string|int $actual): bool
+function checkAnswer(string $expected, string $actual): bool
 {
     return $expected === $actual ? true : false;
 }
