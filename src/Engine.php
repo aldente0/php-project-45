@@ -39,9 +39,9 @@ function checkAnswer(string $expected, string $actual): bool
     return $expected === $actual ? true : false;
 }
 
-function startNextQuiz(int|array $value, int|string $expectedAnswer, int $quantityCorrectAnswers): array
+function startNextQuiz(int $quantityCorrectAnswers, int|array $forCreateAnswer, int|string $expectedAnswer): array
 {
-    $question = createQuestion($value);
+    $question = createQuestion($forCreateAnswer);
     printQuestion($question);
     $answer = answerTheQuestion();
     $isCorrectAnswer = checkAnswer($expectedAnswer, $answer);
