@@ -18,7 +18,7 @@ use function BrainGames\Helpers\BrainGCDHelpers\getGCD;
 use function BrainGames\Helpers\BrainEvenHelpers\isEven;
 use function BrainGames\Helpers\BrainPrimeHelpers\isPrime;
 
-function startBrainExpression(): int
+function startBrainProgression(): int
 {
     $quantityCorrectAnswers = 0;
     $isCorrectAnswer = true;
@@ -28,18 +28,18 @@ function startBrainExpression(): int
         $increment = getRandomNumber(1, 10);
         $excludedNumberIndex = getRandomNumber(0, $progressionLength - 1);
         $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
-        $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
+        $expected = getExcludedNumber($progression, $excludedNumberIndex, $increment);
 
-        $expression = createQuestion($progression);
-        askQuestion($expression);
+        $progression = createQuestion($progression);
+        askQuestion($progression);
         $answer = answerTheQuestion();
-        $isCorrectAnswer = checkAnswer($excludedNumber, $answer);
+        $isCorrectAnswer = checkAnswer($expected, $answer);
 
         if ($isCorrectAnswer) {
             $quantityCorrectAnswers++;
             line('Correct!');
         } else {
-            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $excludedNumber);
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expected);
         }
     } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
 
@@ -61,10 +61,11 @@ function startBrainCalc(): int
             $secondOperand = getRandomNumber();
         }
 
+        $expected = calcExpression($firstOperand, $secondOperand, $operation);
+
         $expression = createQuestion($firstOperand, $operation, $secondOperand);
         askQuestion($expression);
         $answer = answerTheQuestion();
-        $expected = calcExpression($firstOperand, $secondOperand, $operation);
         $isCorrectAnswer = checkAnswer($expected, $answer);
 
         if ($isCorrectAnswer) {
@@ -85,10 +86,10 @@ function startBrainEven(): int
 
     do {
         $number = getRandomNumber();
+        $expected = isEven($number) ? 'yes' : 'no';
 
         askQuestion($number);
         $answer = answerTheQuestion();
-        $expected = isEven($number) ? 'yes' : 'no';
         $isCorrectAnswer = checkAnswer($expected, $answer);
 
         if ($isCorrectAnswer) {
@@ -135,19 +136,18 @@ function startBrainGCD(): int
         $multiplier = getRandomNumber(2, 5);
         $firstNumber = getRandomNumber(1, 50) * $multiplier;
         $secondNumber = getRandomNumber(1, 50) * $multiplier;
-
-        $gcd = getGCD($firstNumber, $secondNumber, $multiplier);
+        $expected = getGCD($firstNumber, $secondNumber, $multiplier);
         
         $numbersRow = createQuestion($firstNumber, $secondNumber);
         askQuestion($numbersRow);
         $answer = answerTheQuestion();
-        $isCorrectAnswer = checkAnswer($gcd, $answer);
+        $isCorrectAnswer = checkAnswer($expected, $answer);
 
         if ($isCorrectAnswer) {
             $quantityCorrectAnswers++;
             line('Correct!');
         } else {
-            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $gcd);
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expected);
         }
     } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
 
