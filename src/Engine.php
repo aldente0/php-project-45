@@ -36,14 +36,14 @@ function isContinueGame(int $quantityCorrectAnswers, bool $isCorrectAnswer): boo
 
 function checkAnswer(string|int $expected, string|int $actual): bool
 {
-    return $expected === $actual ? true : false;
+    return $expected == $actual ? true : false;
 }
 
 function startNextQuiz(int $quantityCorrectAnswers, int|array $forCreateAnswer, int|string $expectedAnswer): array
 {
     $question = createQuestion($forCreateAnswer);
     printQuestion($question);
-    $answer = (int)answerTheQuestion();
+    $answer = answerTheQuestion();
     $isCorrectAnswer = checkAnswer($expectedAnswer, $answer);
 
     if ($isCorrectAnswer) {
