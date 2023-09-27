@@ -14,7 +14,7 @@ const BRAIN_PRIME_RULES = 'Answer "yes" if given number is prime. Otherwise answ
 function welcomePlayer(): string
 {
     line("Welcome to the Brain Games!");
-    $name = prompt('May I have your name?', false, "\n");
+    $name = prompt('May I have your name?', '', "\n");
     line("Hello, %s", $name);
 
     return $name;
@@ -31,7 +31,7 @@ function showRules(string $gameName): void
     };
 }
 
-function showResult(int $quantityCorrectAnswer, $name): void
+function showResult(int $quantityCorrectAnswer, string $name): void
 {
     if ($quantityCorrectAnswer === 3) {
         line('Congratulations, %s!', $name);
