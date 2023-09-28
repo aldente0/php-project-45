@@ -52,7 +52,7 @@ function checkAnswer(string|int $expected, string|int $actual): bool
 function startApp(string $gameName): void
 {
     $name = welcomePlayer();
-    showRules(GAME_NAME);
+    showRules($gameName);
     $gameFunction = getGameFunction($gameName);
 
     if (! function_exists($gameFunction)) {
