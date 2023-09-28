@@ -5,7 +5,6 @@ namespace BrainGames\Games\BrainPrime;
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\isContinueGame;
 use function BrainGames\Engine\startNextQuiz;
-use function BrainGames\Helpers\BrainPrimeHelpers\isPrime;
 
 function startBrainPrime(): int
 {
@@ -23,4 +22,17 @@ function startBrainPrime(): int
     } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
 
     return $quantityCorrectAnswers;
+}
+
+function isPrime(int $number): bool
+{
+    $isPrime = true;
+
+    for ($i = 2; $isPrime && $i < $number; $i++) {
+        if ($number % $i === 0) {
+            $isPrime = false;
+        }
+    }
+
+    return $isPrime;
 }

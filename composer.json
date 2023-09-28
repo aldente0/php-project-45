@@ -19,11 +19,6 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/Helpers/BrainEvenHelpers.php",
-            "src/Helpers/BrainGCDHelpers.php",
-            "src/Helpers/BrainCalcHelpers.php",
-            "src/Helpers/BrainProgressionHelpers.php",
-            "src/Helpers/BrainPrimeHelpers.php",
             "src/Engine.php",
             "src/Info.php",
             "src/Games/BrainCalc.php",

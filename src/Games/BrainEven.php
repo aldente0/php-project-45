@@ -5,7 +5,6 @@ namespace BrainGames\Games\BrainEven;
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\isContinueGame;
 use function BrainGames\Engine\startNextQuiz;
-use function BrainGames\Helpers\BrainEvenHelpers\isEven;
 
 function startBrainEven(): int
 {
@@ -23,4 +22,9 @@ function startBrainEven(): int
     } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
 
     return $quantityCorrectAnswers;
+}
+
+function isEven(int $number): bool
+{
+    return $number % 2 === 0 ? true : false;
 }
