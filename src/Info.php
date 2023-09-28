@@ -24,11 +24,11 @@ function welcomePlayer(): string
 function showRules(string $gameName): void
 {
     match ($gameName) {
-        'brain-even' => line(BRAIN_EVEN_RULES),
-        'brain-calc' => line(BRAIN_CALC_RULES),
-        'brain-gcd' => line(BRAIN_GSD_RULES),
-        'brain-progression' => line(BRAIN_PROGRESSION_RULES),
-        'brain-prime' => line(BRAIN_PRIME_RULES),
+        'BrainEven' => line(BRAIN_EVEN_RULES),
+        'BrainCalc' => line(BRAIN_CALC_RULES),
+        'BrainGCD' => line(BRAIN_GSD_RULES),
+        'BrainProgression' => line(BRAIN_PROGRESSION_RULES),
+        'BrainPrime' => line(BRAIN_PRIME_RULES),
         default => line(UNKNOWN_GAME_RULES),
     };
 }

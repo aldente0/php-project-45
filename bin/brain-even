@@ -1,16 +1,10 @@
 #!/usr/bin/env php 
 <?php
 
-const GAME_NAME = 'brain-even';
+const GAME_NAME = 'BrainEven';
 
-use function BrainGames\Games\BrainEven\startBrainEven;
-use function BrainGames\Info\welcomePlayer;
-use function BrainGames\Info\showRules;
-use function BrainGames\Info\showResult;
+use function BrainGames\Engine\startApp;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$name = welcomePlayer();
-showRules(GAME_NAME);
-$quantityCorrectAnswer = startBrainEven();
-showResult($quantityCorrectAnswer, $name);
+startApp(GAME_NAME);
