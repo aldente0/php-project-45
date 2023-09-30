@@ -2,22 +2,46 @@
 [![Actions Status](https://github.com/aldente0/php-project-45/workflows/hexlet-check/badge.svg)](https://github.com/aldente0/php-project-45/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/787a8845ebbb98fcb663/maintainability)](https://codeclimate.com/github/aldente0/php-project-45/maintainability)
 
-Asciinema of running brain-even game and installing dependencies:
+Install dependencies:
 
-<script async id="asciicast-609488" src="https://asciinema.org/a/609488.js"></script>
+![alt text](./images/install-dependencies.png)
 
-Asciinema of running brain-calc game:
+Run brain-even and win:
 
-<script async id="asciicast-609836" src="https://asciinema.org/a/609836.js"></script>
+![alt text](./images/brain-even-win.png)
 
-Asciinema of running brain-gcd game:
+Run brain-even and lose:
 
-<script async id="asciicast-609866" src="https://asciinema.org/a/609866.js"></script>
+![alt text](./images/brain-even-lose.png)
 
-Asciinema of running brain-progression game:
+Run brain-gcd and win:
 
-<script async id="asciicast-610003" src="https://asciinema.org/a/610003.js"></script>
+![alt text](./images/brain-gcd-win.png)
 
-Asciinema of running brain-prime game:
+Run brain-gcd and lose:
 
-<script async id="asciicast-610412" src="https://asciinema.org/a/610412.js"></script>
+![alt text](./images/brain-gcd-lose.png)
+
+Run brain-calc and win:
+
+![alt text](./images/brain-calc-win.png)
+
+Run brain-calc and lose:
+
+![alt text](./images/brain-calc-lose.png)
+
+Run brain-progression and win:
+
+![alt text](./images/brain-progression-win.png)
+
+Run brain-progression and lose:
+
+![alt text](./images/brain-progression-lose.png)
+
+Run brain-prime and win:
+
+![alt text](./images/brain-prime-win.png)
+
+Run brain-prime and lose:
+
+![alt text](./images/brain-prime-lose.png)
