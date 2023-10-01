@@ -40,12 +40,12 @@ function getExpression(): array
     return [$firstOperand, $operation, $secondOperand];
 }
 
-function getSecondOperand($operation): int
+function getSecondOperand(string $operation): int
 {
     return $operation === '*' ? getRandomNumber(0, 10) : getRandomNumber();
 }
 
-function calcExpression($expression): int
+function calcExpression(array $expression): int
 {
     [$firstOperand, $operation, $secondOperand] = $expression;
 
