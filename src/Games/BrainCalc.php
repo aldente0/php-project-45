@@ -3,39 +3,52 @@
 namespace BrainGames\Games\BrainCalc;
 
 use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\isContinueGame;
+use function BrainGames\Engine\isGameGoingOn;
 use function BrainGames\Engine\startNextQuiz;
+use function BrainGames\Info\showResult;
+use function BrainGames\Info\showRules;
+use function BrainGames\Info\welcomePlayer;
 use function cli\line;
 
-function startBrainCalc(): int
+const BRAIN_CALC_RULES = 'What is the result of the expression?';
+
+function startBrainCalc(): void
 {
-    $quantityCorrectAnswers = 0;
+    $player = welcomePlayer();
+    showRules(BRAIN_CALC_RULES);
+    $isWonGame = true;
 
-    do {
-        $firstOperand = getRandomNumber();
-        $operation = getRandomOperation();
+    for ($turn = 0; isGameGoingOn($turn, $isWonGame); $turn++) {
+        $expression = getExpression();
+        $result = calcExpression($expression);
 
-        if ($operation === '*') {
-            $secondOperand = getRandomNumber(0, 10);
-        } else {
-            $secondOperand = getRandomNumber();
-        }
-
-        $expression = [$firstOperand, $operation, $secondOperand];
-        $result = calcExpression($firstOperand, $secondOperand, $operation);
-
-        [$quantityCorrectAnswers, $isCorrectAnswer] = startNextQuiz(
-            $quantityCorrectAnswers,
-            forCreateAnswer: $expression,
+        $isWonGame = startNextQuiz(
+            forCreateQuestion: $expression,
             expectedAnswer: $result
         );
-    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+    }
 
-    return $quantityCorrectAnswers;
+    showResult($isWonGame, $player);
 }
 
-function calcExpression(int $firstOperand, int $secondOperand, string $operation): int
+function getExpression(): array
 {
+    $firstOperand = getRandomNumber();
+    $operation = getRandomOperation();
+    $secondOperand = getSecondOperand($operation);
+
+    return [$firstOperand, $operation, $secondOperand];
+}
+
+function getSecondOperand($operation): int
+{
+    return $operation === '*' ? getRandomNumber(0, 10) : getRandomNumber();
+}
+
+function calcExpression($expression): int
+{
+    [$firstOperand, $operation, $secondOperand] = $expression;
+
     return match ($operation) {
         '+' => $firstOperand + $secondOperand,
         '-' => $firstOperand - $secondOperand,

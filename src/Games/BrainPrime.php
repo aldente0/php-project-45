@@ -3,25 +3,31 @@
 namespace BrainGames\Games\BrainPrime;
 
 use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\isContinueGame;
+use function BrainGames\Engine\isGameGoingOn;
 use function BrainGames\Engine\startNextQuiz;
+use function BrainGames\Info\showResult;
+use function BrainGames\Info\showRules;
+use function BrainGames\Info\welcomePlayer;
 
-function startBrainPrime(): int
+const BRAIN_PRIME_RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+function startBrainPrime(): void
 {
-    $quantityCorrectAnswers = 0;
+    $player = welcomePlayer();
+    showRules(BRAIN_PRIME_RULES);
+    $isWonGame = true;
 
-    do {
+    for ($turn = 0; isGameGoingOn($turn, $isWonGame); $turn++) {
         $number = getRandomNumber(2, 100);
         $isPrime = isPrime($number) ? 'yes' : 'no';
 
-        [$quantityCorrectAnswers, $isCorrectAnswer] = startNextQuiz(
-            $quantityCorrectAnswers,
-            forCreateAnswer: $number,
+        $isWonGame = startNextQuiz(
+            forCreateQuestion: $number,
             expectedAnswer: $isPrime
         );
-    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+    }
 
-    return $quantityCorrectAnswers;
+    showResult($isWonGame, $player);
 }
 
 function isPrime(int $number): bool

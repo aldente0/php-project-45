@@ -3,25 +3,31 @@
 namespace BrainGames\Games\BrainEven;
 
 use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\isContinueGame;
+use function BrainGames\Engine\isGameGoingOn;
 use function BrainGames\Engine\startNextQuiz;
+use function BrainGames\Info\showResult;
+use function BrainGames\Info\showRules;
+use function BrainGames\Info\welcomePlayer;
 
-function startBrainEven(): int
+const BRAIN_EVEN_RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+function startBrainEven(): void
 {
-    $quantityCorrectAnswers = 0;
+    $player = welcomePlayer();
+    showRules(BRAIN_EVEN_RULES);
+    $isWonGame = true;
 
-    do {
+    for ($turn = 0; isGameGoingOn($turn, $isWonGame); $turn++) {
         $number = getRandomNumber();
         $isEven = isEven($number) ? 'yes' : 'no';
 
-        [$quantityCorrectAnswers, $isCorrectAnswer] = startNextQuiz(
-            $quantityCorrectAnswers,
-            forCreateAnswer: $number,
+        $isWonGame = startNextQuiz(
+            forCreateQuestion: $number,
             expectedAnswer: $isEven
         );
-    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+    }
 
-    return $quantityCorrectAnswers;
+    showResult($isWonGame, $player);
 }
 
 function isEven(int $number): bool

@@ -3,28 +3,34 @@
 namespace BrainGames\Games\BrainGCD;
 
 use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\isContinueGame;
+use function BrainGames\Engine\isGameGoingOn;
 use function BrainGames\Engine\startNextQuiz;
+use function BrainGames\Info\showResult;
+use function BrainGames\Info\showRules;
+use function BrainGames\Info\welcomePlayer;
 
-function startBrainGCD(): int
+const BRAIN_GSD_RULES = 'Find the greatest common divisor of given numbers.';
+
+function startBrainGCD(): void
 {
-    $quantityCorrectAnswers = 0;
+    $player = welcomePlayer();
+    showRules(BRAIN_GSD_RULES);
+    $isWonGame = true;
 
-    do {
+    for ($turn = 0; isGameGoingOn($turn, $isWonGame); $turn++) {
         $multiplier = getRandomNumber(2, 5);
         $firstNumber = getRandomNumber(1, 50) * $multiplier;
         $secondNumber = getRandomNumber(1, 50) * $multiplier;
         $numbers = [$secondNumber, $firstNumber];
         $gcd = getGCD($firstNumber, $secondNumber, $multiplier);
 
-        [$quantityCorrectAnswers, $isCorrectAnswer] = startNextQuiz(
-            $quantityCorrectAnswers,
-            forCreateAnswer: $numbers,
+        $isWonGame = startNextQuiz(
+            forCreateQuestion: $numbers,
             expectedAnswer: $gcd
         );
-    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+    }
 
-    return $quantityCorrectAnswers;
+    showResult($isWonGame, $player);
 }
 
 function getGCD(int $num1, int $num2, int $minGCD): int

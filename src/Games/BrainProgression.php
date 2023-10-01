@@ -2,30 +2,35 @@
 
 namespace BrainGames\Games\BrainProgression;
 
+use function BrainGames\Info\welcomePlayer;
 use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\isContinueGame;
+use function BrainGames\Engine\isGameGoingOn;
 use function BrainGames\Engine\startNextQuiz;
+use function BrainGames\Info\showResult;
+use function BrainGames\Info\showRules;
 
-function startBrainProgression(): int
+const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
+
+function startBrainProgression(): void
 {
-    $quantityCorrectAnswers = 0;
-    $isCorrectAnswer = true;
+    $player = welcomePlayer();
+    showRules(BRAIN_PROGRESSION_RULES);
+    $isWonGame = true;
 
-    do {
+    for ($turn = 0; isGameGoingOn($turn, $isWonGame); $turn++) {
         $progressionLength = getRandomNumber(5, 10);
-        $increment = getRandomNumber(1, 10);
+        $increment = getRandomNumber(2, 10);
         $excludedNumberIndex = getRandomNumber(0, $progressionLength - 1);
         $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
         $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
 
-        [$quantityCorrectAnswers, $isCorrectAnswer] = startNextQuiz(
-            $quantityCorrectAnswers,
-            forCreateAnswer: $progression,
+        $isWonGame = startNextQuiz(
+            forCreateQuestion: $progression,
             expectedAnswer: $excludedNumber
         );
-    } while (isContinueGame($quantityCorrectAnswers, $isCorrectAnswer));
+    }
 
-    return $quantityCorrectAnswers;
+    showResult($isWonGame, $player);
 }
 
 function getProgression(int $progressionLength, int $excludeNumberIndex, int $increment): array
