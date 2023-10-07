@@ -3,10 +3,7 @@
 namespace BrainGames\Games\BrainPrime;
 
 use function BrainGames\Engine\getBrainPrimeData;
-use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\isGameGoingOn;
 use function BrainGames\Engine\play;
-use function BrainGames\Engine\startNextQuiz;
 use function BrainGames\Engine\showResult;
 use function BrainGames\Engine\showRules;
 use function BrainGames\Engine\welcomePlayer;
