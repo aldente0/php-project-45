@@ -5,9 +5,7 @@ namespace BrainGames\Games\BrainProgression;
 use function BrainGames\Engine\getBrainProgressionData;
 use function BrainGames\Engine\welcomePlayer;
 use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\isGameGoingOn;
 use function BrainGames\Engine\play;
-use function BrainGames\Engine\startNextQuiz;
 use function BrainGames\Engine\showResult;
 use function BrainGames\Engine\showRules;
 
