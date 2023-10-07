@@ -2,12 +2,12 @@
 
 namespace BrainGames\Games\BrainCalc;
 
+use function BrainGames\Engine\getBrainCalcData;
 use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\isGameGoingOn;
-use function BrainGames\Engine\startNextQuiz;
-use function BrainGames\Info\showResult;
-use function BrainGames\Info\showRules;
-use function BrainGames\Info\welcomePlayer;
+use function BrainGames\Engine\play;
+use function BrainGames\Engine\showResult;
+use function BrainGames\Engine\showRules;
+use function BrainGames\Engine\welcomePlayer;
 use function cli\line;
 
 const BRAIN_CALC_RULES = 'What is the result of the expression?';
@@ -16,17 +16,9 @@ function startBrainCalc(): void
 {
     $player = welcomePlayer();
     showRules(BRAIN_CALC_RULES);
-    $isWonGame = true;
 
-    for ($turn = 0; isGameGoingOn($turn, $isWonGame); $turn++) {
-        $expression = getExpression();
-        $result = calcExpression($expression);
-
-        $isWonGame = startNextQuiz(
-            forCreateQuestion: $expression,
-            expectedAnswer: $result
-        );
-    }
+    $gameData = getBrainCalcData();
+    $isWonGame = play($gameData);
 
     showResult($isWonGame, $player);
 }
