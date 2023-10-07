@@ -28,7 +28,7 @@ function play(array $gameData): bool
     $isWonGame = true;
 
     foreach ($gameData as [$forCreateQuestion, $expectedAnswer]) {
-        $isWonGame = startNextQuiz($forCreateQuestion, $expectedAnswer);
+        $isWonGame = startNextRound($forCreateQuestion, $expectedAnswer);
 
         if (! $isWonGame) {
             return $isWonGame;
@@ -73,7 +73,7 @@ function getBrainPrimeData(): array
     $gameData = [];
 
     for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $number = getRandomNumber();
+        $number = getRandomNumber(2);
         $isPrime = isPrime($number) ? 'yes' : 'no';
         $gameData[] = [$number, $isPrime];
     }
@@ -124,7 +124,7 @@ function showResult(bool $isWonGame, string $player): void
     }
 }
 
-function getRandomNumber(int $max = 0, int $min = 50): int
+function getRandomNumber(int $min = 0, int $max = 50): int
 {
     return rand($min, $max);
 }
@@ -158,7 +158,7 @@ function checkAnswer(string|int $expected, string|int $actual): bool
     return $expected == $actual ? true : false;
 }
 
-function startNextQuiz(int|array $forCreateQuestion, int|string $expectedAnswer): bool
+function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer): bool
 {
     $question = createQuestion($forCreateQuestion);
     printQuestion($question);
