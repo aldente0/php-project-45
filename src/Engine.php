@@ -45,6 +45,7 @@ function getBrainCalcData(): array
     for ($i = 0; $i < ROUND_COUNT; $i++) {
         $expression = getExpression();
         $result = calcExpression($expression);
+
         $gameData[] = [$expression, $result];
     }
 
@@ -75,6 +76,7 @@ function getBrainPrimeData(): array
     for ($i = 0; $i < ROUND_COUNT; $i++) {
         $number = getRandomNumber(2);
         $isPrime = isPrime($number) ? 'yes' : 'no';
+
         $gameData[] = [$number, $isPrime];
     }
 
@@ -91,6 +93,7 @@ function getBrainProgressionData(): array
         $excludedNumberIndex = getRandomNumber(0, $progressionLength - 1);
         $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
         $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
+
         $gameData[] = [$progression, $excludedNumber];
     }
 
@@ -104,6 +107,7 @@ function getBrainEvenData(): array
     for ($i = 0; $i < ROUND_COUNT; $i++) {
         $number = getRandomNumber();
         $isEven = isEven($number) ? 'yes' : 'no';
+
         $gameData[] = [$number, $isEven];
     }
 
