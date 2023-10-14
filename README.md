@@ -4,7 +4,7 @@
 
 # Brain Games
 
-This is a set of 5 console games: brain-event, brain-prime, brain-progression, brain-calc and brain-GCD.
+This is a set of 5 console games: brain-even, brain-prime, brain-progression, brain-calc and brain-gcd.
 
 ### Requirements
 
