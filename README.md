@@ -1,19 +1,23 @@
-### Hexlet tests and linter status:
+## Hexlet tests and linter status:
 [![Actions Status](https://github.com/aldente0/php-project-45/workflows/hexlet-check/badge.svg)](https://github.com/aldente0/php-project-45/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/787a8845ebbb98fcb663/maintainability)](https://codeclimate.com/github/aldente0/php-project-45/maintainability)
 
 # Brain Games
 
-This is a set of 5 console games: brain-even, brain-prime, brain-progression, brain-calc and brain-gcd.
+This is a set of 5 console math games: brain-even, brain-prime, brain-progression, brain-calc and brain-gcd.
 
-### Requirements
+## Requirements
 
 composer >= 2.5.8 to install dependencies.
 php >= 8.1.2 to run games.
 
-### Install dependencies:
+## Install dependencies:
 
 ![alt text](./images/install-dependencies.png)
+
+## Brain-even
+
+The brain-even is a game in which you need to determine an even number or not.
 
 ### Run brain-even and win:
 
@@ -23,6 +27,10 @@ php >= 8.1.2 to run games.
 
 ![alt text](./images/brain-even-lose.png)
 
+## Brain-gcd
+
+The brain-gcd is a game in which you need to determine the greatest common multiplier (GCD) of two numbers.
+
 ### Run brain-gcd and win:
 
 ![alt text](./images/brain-gcd-win.png)
@@ -30,6 +38,10 @@ php >= 8.1.2 to run games.
 ### Run brain-gcd and lose:
 
 ![alt text](./images/brain-gcd-lose.png)
+
+## Brain-calc
+
+The brain-calc is a game in which you need to calculate the value of an expression.
 
 ### Run brain-calc and win:
 
@@ -39,13 +51,21 @@ php >= 8.1.2 to run games.
 
 ![alt text](./images/brain-calc-lose.png)
 
+## Brain-progression
+
+The brain-progression is a game in which you need to determine the missing number of an arithmetic sequence.
+
 ### Run brain-progression and win:
 
 ![alt text](./images/brain-progression-win.png)
 
-Run brain-progression and lose:
+### Run brain-progression and lose:
 
 ![alt text](./images/brain-progression-lose.png)
+
+## Brain-prime
+
+The brain-prime is a game in which you need to determine an prime number or not.
 
 ### Run brain-prime and win:
 
