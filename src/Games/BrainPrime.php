@@ -27,7 +27,9 @@ function isPrime(int $number): bool
 {
     $isPrime = true;
 
-    for ($i = 2; $isPrime && $i < $number; $i++) {
+    $numberHalf = ceil($number / 2);
+
+    for ($i = 2; $isPrime && $i < $numberHalf; $i++) {
         if ($number % $i === 0) {
             $isPrime = false;
         }
