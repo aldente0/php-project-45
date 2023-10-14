@@ -2,13 +2,6 @@
 
 namespace BrainGames\Engine;
 
-use function BrainGames\Games\BrainCalc\getExpression;
-use function BrainGames\Games\BrainCalc\calcExpression;
-use function BrainGames\Games\BrainEven\isEven;
-use function BrainGames\Games\BrainPrime\isPrime;
-use function BrainGames\Games\BrainGCD\getGCD;
-use function BrainGames\Games\BrainProgression\getProgression;
-use function BrainGames\Games\BrainProgression\getExcludedNumber;
 use function cli\line;
 use function cli\prompt;
 
@@ -36,82 +29,6 @@ function play(array $gameData): bool
     }
 
     return $isWonGame;
-}
-
-function getBrainCalcData(): array
-{
-    $gameData = [];
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $expression = getExpression();
-        $result = calcExpression($expression);
-
-        $gameData[] = [$expression, $result];
-    }
-
-    return $gameData;
-}
-
-function getBrainGCDData(): array
-{
-    $gameData = [];
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $multiplier = getRandomNumber(2, 5);
-        $firstNumber = getRandomNumber(1, 50) * $multiplier;
-        $secondNumber = getRandomNumber(1, 50) * $multiplier;
-        $numbers = [$secondNumber, $firstNumber];
-        $gcd = getGCD($firstNumber, $secondNumber, $multiplier);
-
-        $gameData[] = [$numbers, $gcd];
-    }
-
-    return $gameData;
-}
-
-function getBrainPrimeData(): array
-{
-    $gameData = [];
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $number = getRandomNumber(2);
-        $isPrime = isPrime($number) ? 'yes' : 'no';
-
-        $gameData[] = [$number, $isPrime];
-    }
-
-    return $gameData;
-}
-
-function getBrainProgressionData(): array
-{
-    $gameData = [];
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $progressionLength = getRandomNumber(5, 10);
-        $increment = getRandomNumber(2, 10);
-        $excludedNumberIndex = getRandomNumber(0, $progressionLength - 1);
-        $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
-        $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
-
-        $gameData[] = [$progression, $excludedNumber];
-    }
-
-    return $gameData;
-}
-
-function getBrainEvenData(): array
-{
-    $gameData = [];
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $number = getRandomNumber();
-        $isEven = isEven($number) ? 'yes' : 'no';
-
-        $gameData[] = [$number, $isEven];
-    }
-
-    return $gameData;
 }
 
 function showRules(string $rules): void

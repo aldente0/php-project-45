@@ -2,7 +2,6 @@
 
 namespace BrainGames\Games\BrainCalc;
 
-use function BrainGames\Engine\getBrainCalcData;
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\play;
 use function BrainGames\Engine\showResult;
@@ -47,6 +46,20 @@ function calcExpression(array $expression): int
         '*' => $firstOperand * $secondOperand,
         default => line('This operation is not processed'),
     };
+}
+
+function getBrainCalcData(): array
+{
+    $gameData = [];
+
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
+        $expression = getExpression();
+        $result = calcExpression($expression);
+
+        $gameData[] = [$expression, $result];
+    }
+
+    return $gameData;
 }
 
 function getRandomOperation(): string
