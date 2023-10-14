@@ -19,7 +19,7 @@ function startBrainGCD(): void
     $roundCount = getRoundCount();
     $gameData = getBrainGCDData($roundCount);
     $isWonGame = play($gameData);
-    
+
     showResult($isWonGame, $player);
 }
 

@@ -16,7 +16,7 @@ function startBrainProgression(): void
     $player = welcomePlayer();
     showRules(BRAIN_PROGRESSION_RULES);
 
-    $roundCount = getRoundCount(); 
+    $roundCount = getRoundCount();
     $gameData = getBrainProgressionData($roundCount);
     $isWonGame = play($gameData);
 
