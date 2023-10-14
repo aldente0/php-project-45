@@ -2,6 +2,8 @@
 
 namespace BrainGames\Games\BrainPrime;
 
+use function BrainGames\Engine\getRandomNumber;
+use function BrainGames\Engine\getRoundCount;
 use function BrainGames\Engine\play;
 use function BrainGames\Engine\showResult;
 use function BrainGames\Engine\showRules;
@@ -14,7 +16,8 @@ function startBrainPrime(): void
     $player = welcomePlayer();
     showRules(BRAIN_PRIME_RULES);
 
-    $gameData = getBrainPrimeData();
+    $roundCount = getRoundCount();
+    $gameData = getBrainPrimeData($roundCount);
     $isWonGame = play($gameData);
 
     showResult($isWonGame, $player);
@@ -33,11 +36,11 @@ function isPrime(int $number): bool
     return $isPrime;
 }
 
-function getBrainPrimeData(): array
+function getBrainPrimeData(int $roundCount): array
 {
     $gameData = [];
 
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
+    for ($i = 0; $i < $roundCount; $i++) {
         $number = getRandomNumber(2);
         $isPrime = isPrime($number) ? 'yes' : 'no';
 

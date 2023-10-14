@@ -16,6 +16,11 @@ function welcomePlayer(): string
     return $name;
 }
 
+function getRoundCount(): int
+{
+    return ROUND_COUNT;
+}
+
 function play(array $gameData): bool
 {
     $isWonGame = true;

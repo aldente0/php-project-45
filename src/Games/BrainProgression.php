@@ -4,6 +4,7 @@ namespace BrainGames\Games\BrainProgression;
 
 use function BrainGames\Engine\welcomePlayer;
 use function BrainGames\Engine\getRandomNumber;
+use function BrainGames\Engine\getRoundCount;
 use function BrainGames\Engine\play;
 use function BrainGames\Engine\showResult;
 use function BrainGames\Engine\showRules;
@@ -15,7 +16,8 @@ function startBrainProgression(): void
     $player = welcomePlayer();
     showRules(BRAIN_PROGRESSION_RULES);
 
-    $gameData = getBrainProgressionData();
+    $roundCount = getRoundCount(); 
+    $gameData = getBrainProgressionData($roundCount);
     $isWonGame = play($gameData);
 
     showResult($isWonGame, $player);
@@ -53,11 +55,11 @@ function getExcludedNumber(array $progression, int $excludedNumberIndex, int $in
     return $excludedNumber;
 }
 
-function getBrainProgressionData(): array
+function getBrainProgressionData(int $roundCount): array
 {
     $gameData = [];
 
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
+    for ($i = 0; $i < $roundCount; $i++) {
         $progressionLength = getRandomNumber(5, 10);
         $increment = getRandomNumber(2, 10);
         $excludedNumberIndex = getRandomNumber(0, $progressionLength - 1);
