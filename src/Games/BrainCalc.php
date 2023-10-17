@@ -46,7 +46,7 @@ function calcExpression(array $expression): int
         '+' => $firstOperand + $secondOperand,
         '-' => $firstOperand - $secondOperand,
         '*' => $firstOperand * $secondOperand,
-        default => line('This operation is not processed'),
+        default => throw new \Exception('This operation is not processed')
     };
 }
 
