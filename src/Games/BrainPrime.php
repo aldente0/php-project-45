@@ -26,17 +26,15 @@ function startBrainPrime(): void
 
 function isPrime(int $number): bool
 {
-    $isPrime = true;
-
     $numberHalf = ceil($number / 2);
 
-    for ($i = 2; $isPrime && $i <= $numberHalf; $i++) {
+    for ($i = 2; $i <= $numberHalf; $i++) {
         if ($number % $i === 0) {
-            $isPrime = false;
+            return false;
         }
     }
 
-    return $isPrime;
+    return true;
 }
 
 function getBrainPrimeData(): array
