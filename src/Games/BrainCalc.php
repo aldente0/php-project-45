@@ -2,6 +2,8 @@
 
 namespace BrainGames\Games\BrainCalc;
 
+use const BrainGames\Engine\ROUND_COUNT;
+
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\getRoundCount;
 use function BrainGames\Engine\play;
@@ -17,8 +19,7 @@ function startBrainCalc(): void
     $player = welcomePlayer();
     showRules(BRAIN_CALC_RULES);
 
-    $roundCount = getRoundCount();
-    $gameData = getBrainCalcData($roundCount);
+    $gameData = getBrainCalcData();
     $isWonGame = play($gameData);
 
     showResult($isWonGame, $player);
@@ -50,11 +51,11 @@ function calcExpression(array $expression): int
     };
 }
 
-function getBrainCalcData(int $roundCount): array
+function getBrainCalcData(): array
 {
     $gameData = [];
 
-    for ($i = 0; $i < $roundCount; $i++) {
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
         $expression = getExpression();
         $result = calcExpression($expression);
 

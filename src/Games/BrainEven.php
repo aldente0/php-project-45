@@ -2,6 +2,8 @@
 
 namespace BrainGames\Games\BrainEven;
 
+use const BrainGames\Engine\ROUND_COUNT;
+
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\getRoundCount;
 use function BrainGames\Engine\play;
@@ -16,8 +18,7 @@ function startBrainEven(): void
     $player = welcomePlayer();
     showRules(BRAIN_EVEN_RULES);
 
-    $roundCount = getRoundCount();
-    $gameData = getBrainEvenData($roundCount);
+    $gameData = getBrainEvenData();
     $isWonGame = play($gameData);
 
     showResult($isWonGame, $player);
@@ -28,11 +29,11 @@ function isEven(int $number): bool
     return $number % 2 === 0 ? true : false;
 }
 
-function getBrainEvenData(int $roundCount): array
+function getBrainEvenData(): array
 {
     $gameData = [];
 
-    for ($i = 0; $i < $roundCount; $i++) {
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
         $number = getRandomNumber();
         $isEven = isEven($number) ? 'yes' : 'no';
 

@@ -2,6 +2,8 @@
 
 namespace BrainGames\Games\BrainGCD;
 
+use const BrainGames\Engine\ROUND_COUNT;
+
 use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\getRoundCount;
 use function BrainGames\Engine\play;
@@ -16,8 +18,7 @@ function startBrainGCD(): void
     $player = welcomePlayer();
     showRules(BRAIN_GSD_RULES);
 
-    $roundCount = getRoundCount();
-    $gameData = getBrainGCDData($roundCount);
+    $gameData = getBrainGCDData();
     $isWonGame = play($gameData);
 
     showResult($isWonGame, $player);
@@ -41,11 +42,11 @@ function getSmallerNumber(int $num1, int $num2): int
     return ($num1 <= $num2) ? $num1 : $num2;
 }
 
-function getBrainGCDData(int $roundCount): array
+function getBrainGCDData(): array
 {
     $gameData = [];
 
-    for ($i = 0; $i < $roundCount; $i++) {
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
         $multiplier = getRandomNumber(2, 5);
         $firstNumber = getRandomNumber(1, 50) * $multiplier;
         $secondNumber = getRandomNumber(1, 50) * $multiplier;
