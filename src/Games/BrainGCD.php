@@ -23,9 +23,9 @@ function startBrainGCD(): void
     showResult($isWonGame, $player);
 }
 
-function getGCD(int $num1, int $num2, int $minGCD): int
+function getGCD(int $num1, int $num2): int
 {
-    $gcd = $minGCD;
+    $gcd = 1;
 
     for ($i = getSmallerNumber($num1, $num2); $i > $gcd; $i--) {
         if (($num1 % $i == 0) && ($num2 % $i == 0)) {
@@ -50,7 +50,7 @@ function getBrainGCDData(int $roundCount): array
         $firstNumber = getRandomNumber(1, 50) * $multiplier;
         $secondNumber = getRandomNumber(1, 50) * $multiplier;
         $numbers = [$secondNumber, $firstNumber];
-        $gcd = getGCD($firstNumber, $secondNumber, $multiplier);
+        $gcd = getGCD($firstNumber, $secondNumber);
 
         $gameData[] = [$numbers, $gcd];
     }
