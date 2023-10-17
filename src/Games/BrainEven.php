@@ -26,7 +26,7 @@ function startBrainEven(): void
 
 function isEven(int $number): bool
 {
-    return $number % 2 === 0 ? true : false;
+    return $number % 2 === 0;
 }
 
 function getBrainEvenData(): array
