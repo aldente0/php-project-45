@@ -19,6 +19,8 @@ php >= 8.1.2 to run games.
 
 The brain-even is a game in which you need to determine an even number or not.
 
+Asciinema: https://asciinema.org/a/609488
+
 ### Run brain-even and win:
 
 ![alt text](./images/brain-even-win.png)
@@ -30,6 +32,8 @@ The brain-even is a game in which you need to determine an even number or not.
 ## Brain-gcd
 
 The brain-gcd is a game in which you need to determine the greatest common multiplier (GCD) of two numbers.
+
+Asciinema: https://asciinema.org/a/609488
 
 ### Run brain-gcd and win:
 
@@ -43,6 +47,8 @@ The brain-gcd is a game in which you need to determine the greatest common multi
 
 The brain-calc is a game in which you need to calculate the value of an expression.
 
+Asciinema: https://asciinema.org/a/609836
+
 ### Run brain-calc and win:
 
 ![alt text](./images/brain-calc-win.png)
@@ -55,6 +61,8 @@ The brain-calc is a game in which you need to calculate the value of an expressi
 
 The brain-progression is a game in which you need to determine the missing number of an arithmetic sequence.
 
+Asciinema: https://asciinema.org/a/610003
+
 ### Run brain-progression and win:
 
 ![alt text](./images/brain-progression-win.png)
@@ -66,6 +74,8 @@ The brain-progression is a game in which you need to determine the missing numbe
 ## Brain-prime
 
 The brain-prime is a game in which you need to determine an prime number or not.
+
+Asciinema: https://asciinema.org/a/610412
 
 ### Run brain-prime and win:
 
