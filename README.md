@@ -33,7 +33,7 @@ Asciinema: https://asciinema.org/a/609488
 
 The brain-gcd is a game in which you need to determine the greatest common multiplier (GCD) of two numbers.
 
-Asciinema: https://asciinema.org/a/609488
+Asciinema: https://asciinema.org/a/609866
 
 ### Run brain-gcd and win:
 
