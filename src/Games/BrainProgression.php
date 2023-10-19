@@ -2,26 +2,25 @@
 
 namespace BrainGames\Games\BrainProgression;
 
+use function BrainGames\Engine\getRandomNumber;
+
 use const BrainGames\Engine\ROUND_COUNT;
 
-use function BrainGames\Engine\welcomePlayer;
-use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\getRoundCount;
-use function BrainGames\Engine\play;
-use function BrainGames\Engine\showResult;
-use function BrainGames\Engine\showRules;
-
-const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
-
-function startBrainProgression(): void
+function getBrainProgressionData(): array
 {
-    $player = welcomePlayer();
-    showRules(BRAIN_PROGRESSION_RULES);
+    $gameData = [];
 
-    $gameData = getBrainProgressionData();
-    $isWonGame = play($gameData);
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
+        $progressionLength = getRandomNumber(5, 10);
+        $increment = getRandomNumber(2, 10);
+        $excludedNumberIndex = getRandomNumber(0, $progressionLength - 1);
+        $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
+        $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
 
-    showResult($isWonGame, $player);
+        $gameData[] = [$progression, $excludedNumber];
+    }
+
+    return $gameData;
 }
 
 function getProgression(int $progressionLength, int $excludeNumberIndex, int $increment): array
@@ -54,21 +53,4 @@ function getExcludedNumber(array $progression, int $excludedNumberIndex, int $in
     }
 
     return $excludedNumber;
-}
-
-function getBrainProgressionData(): array
-{
-    $gameData = [];
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $progressionLength = getRandomNumber(5, 10);
-        $increment = getRandomNumber(2, 10);
-        $excludedNumberIndex = getRandomNumber(0, $progressionLength - 1);
-        $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
-        $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
-
-        $gameData[] = [$progression, $excludedNumber];
-    }
-
-    return $gameData;
 }

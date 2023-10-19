@@ -2,27 +2,22 @@
 
 namespace BrainGames\Games\BrainCalc;
 
+use function BrainGames\Engine\getRandomNumber;
+
 use const BrainGames\Engine\ROUND_COUNT;
 
-use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\getRoundCount;
-use function BrainGames\Engine\play;
-use function BrainGames\Engine\showResult;
-use function BrainGames\Engine\showRules;
-use function BrainGames\Engine\welcomePlayer;
-use function cli\line;
-
-const BRAIN_CALC_RULES = 'What is the result of the expression?';
-
-function startBrainCalc(): void
+function getBrainCalcData(): array
 {
-    $player = welcomePlayer();
-    showRules(BRAIN_CALC_RULES);
+    $gameData = [];
 
-    $gameData = getBrainCalcData();
-    $isWonGame = play($gameData);
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
+        $expression = getExpression();
+        $result = calcExpression($expression);
 
-    showResult($isWonGame, $player);
+        $gameData[] = [$expression, $result];
+    }
+
+    return $gameData;
 }
 
 function getExpression(): array
@@ -32,11 +27,6 @@ function getExpression(): array
     $secondOperand = getSecondOperand($operation);
 
     return [$firstOperand, $operation, $secondOperand];
-}
-
-function getSecondOperand(string $operation): int
-{
-    return $operation === '*' ? getRandomNumber(0, 10) : getRandomNumber();
 }
 
 function calcExpression(array $expression): int
@@ -51,18 +41,9 @@ function calcExpression(array $expression): int
     };
 }
 
-function getBrainCalcData(): array
+function getSecondOperand(string $operation): int
 {
-    $gameData = [];
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $expression = getExpression();
-        $result = calcExpression($expression);
-
-        $gameData[] = [$expression, $result];
-    }
-
-    return $gameData;
+    return $operation === '*' ? getRandomNumber(0, 10) : getRandomNumber();
 }
 
 function getRandomOperation(): string

@@ -4,8 +4,36 @@ namespace BrainGames\Engine;
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Games\BrainCalc\getBrainCalcData;
+use function BrainGames\Games\BrainProgression\getBrainProgressionData;
+use function BrainGames\Games\BrainPrime\getBrainPrimeData;
+use function BrainGames\Games\BrainGCD\getBrainGCDData;
+use function BrainGames\Games\BrainEven\getBrainEvenData;
+
+const BRAIN_CALC = 'brain-calc';
+const BRAIN_PRIME = 'brain-prime';
+const BRAIN_GCD = 'brain-gcd';
+const BRAIN_PROGRESSION = 'brain-progression';
+const BRAIN_EVEN = 'brain-even';
+
+const BRAIN_CALC_RULES = 'What is the result of the expression?';
+const BRAIN_PRIME_RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const BRAIN_GCD_RULES = 'Find the greatest common divisor of given numbers.';
+const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
+const BRAIN_EVEN_RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const ROUND_COUNT = 3;
+
+function startGame(string $game): void
+{
+    $player = welcomePlayer();
+    showRules($game);
+
+    $gameData = getGameData($game);
+    $isWonGame = play($gameData);
+
+    showResult($isWonGame, $player);
+}
 
 function welcomePlayer(): string
 {
@@ -14,6 +42,30 @@ function welcomePlayer(): string
     line("Hello, %s", $name);
 
     return $name;
+}
+
+function showRules(string $game): void
+{
+    match ($game) {
+        BRAIN_CALC => line(BRAIN_CALC_RULES),
+        BRAIN_GCD => line(BRAIN_GCD_RULES),
+        BRAIN_EVEN => line(BRAIN_EVEN_RULES),
+        BRAIN_PRIME => line(BRAIN_PRIME_RULES),
+        BRAIN_PROGRESSION => line(BRAIN_PROGRESSION_RULES),
+        default => throw new \Exception('This operation is not processed')
+    };
+}
+
+function getGameData(string $game): array
+{
+    return match ($game) {
+        BRAIN_CALC => getBrainCalcData(),
+        BRAIN_GCD => getBrainGCDData(),
+        BRAIN_EVEN => getBrainEvenData(),
+        BRAIN_PRIME => getBrainPrimeData(),
+        BRAIN_PROGRESSION => getBrainProgressionData(),
+        default => throw new \Exception('This operation is not processed')
+    };
 }
 
 function play(array $gameData): bool
@@ -31,18 +83,30 @@ function play(array $gameData): bool
     return $isWonGame;
 }
 
-function showRules(string $rules): void
-{
-    line($rules);
-}
-
 function showResult(bool $isWonGame, string $player): void
 {
+
     if ($isWonGame) {
         line('Congratulations, %s!', $player);
     } else {
         line("Let's try again, %s!", $player);
     }
+}
+
+function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer): bool
+{
+    $question = createQuestion($forCreateQuestion);
+    printQuestion($question);
+    $answer = answerTheQuestion();
+    $isCorrectAnswer = checkAnswer($expectedAnswer, $answer);
+
+    if ($isCorrectAnswer) {
+        line('Correct!');
+    } else {
+        line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expectedAnswer);
+    }
+
+    return $isCorrectAnswer;
 }
 
 function getRandomNumber(int $min = 0, int $max = 50): int
@@ -77,20 +141,4 @@ function isGameGoingOn(int $turn, bool $isCorrectAnswer): bool
 function checkAnswer(string|int $expected, string|int $actual): bool
 {
     return $expected == $actual ? true : false;
-}
-
-function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer): bool
-{
-    $question = createQuestion($forCreateQuestion);
-    printQuestion($question);
-    $answer = answerTheQuestion();
-    $isCorrectAnswer = checkAnswer($expectedAnswer, $answer);
-
-    if ($isCorrectAnswer) {
-        line('Correct!');
-    } else {
-        line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expectedAnswer);
-    }
-
-    return $isCorrectAnswer;
 }

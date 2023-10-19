@@ -2,27 +2,9 @@
 
 namespace BrainGames\Games\BrainGCD;
 
-use const BrainGames\Engine\ROUND_COUNT;
-
 use function BrainGames\Engine\getRandomNumber;
-use function BrainGames\Engine\getRoundCount;
-use function BrainGames\Engine\play;
-use function BrainGames\Engine\showResult;
-use function BrainGames\Engine\showRules;
-use function BrainGames\Engine\welcomePlayer;
 
-const BRAIN_GSD_RULES = 'Find the greatest common divisor of given numbers.';
-
-function startBrainGCD(): void
-{
-    $player = welcomePlayer();
-    showRules(BRAIN_GSD_RULES);
-
-    $gameData = getBrainGCDData();
-    $isWonGame = play($gameData);
-
-    showResult($isWonGame, $player);
-}
+use const BrainGames\Engine\ROUND_COUNT;
 
 function getGCD(int $num1, int $num2): int
 {
