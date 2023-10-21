@@ -3,6 +3,7 @@
 namespace BrainGames\Games\BrainCalc;
 
 use function BrainGames\Engine\startGame;
+
 use const BrainGames\Engine\ROUND_COUNT;
 
 const BRAIN_CALC = 'brain-calc';
