@@ -15,16 +15,10 @@ function startBrainEven(): void
 
 function getBrainEvenData(): array
 {
-    $gameData = [];
+    $number = rand(0, 50);
+    $isEven = isEven($number) ? 'yes' : 'no';
 
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $number = rand(0, 50);
-        $isEven = isEven($number) ? 'yes' : 'no';
-
-        $gameData[] = [$number, $isEven];
-    }
-
-    return $gameData;
+    return [$number, $isEven];
 }
 
 function isEven(int $number): bool

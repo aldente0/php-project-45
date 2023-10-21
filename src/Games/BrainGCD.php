@@ -15,19 +15,13 @@ function startBrainGCD(): void
 
 function getBrainGCDData(): array
 {
-    $gameData = [];
+    $multiplier = rand(2, 5);
+    $firstNumber = rand(1, 50) * $multiplier;
+    $secondNumber = rand(1, 50) * $multiplier;
+    $numbers = [$secondNumber, $firstNumber];
+    $gcd = getGCD($firstNumber, $secondNumber);
 
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $multiplier = rand(2, 5);
-        $firstNumber = rand(1, 50) * $multiplier;
-        $secondNumber = rand(1, 50) * $multiplier;
-        $numbers = [$secondNumber, $firstNumber];
-        $gcd = getGCD($firstNumber, $secondNumber);
-
-        $gameData[] = [$numbers, $gcd];
-    }
-
-    return $gameData;
+    return [$numbers, $gcd];
 }
 
 function getGCD(int $num1, int $num2): int

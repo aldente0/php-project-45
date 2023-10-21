@@ -58,14 +58,21 @@ function showRules(string $game): void
 
 function getGameData(string $game): array
 {
-    return match ($game) {
-        BRAIN_CALC => getBrainCalcData(),
-        BRAIN_GCD => getBrainGCDData(),
-        BRAIN_EVEN => getBrainEvenData(),
-        BRAIN_PRIME => getBrainPrimeData(),
-        BRAIN_PROGRESSION => getBrainProgressionData(),
-        default => throw new \Exception('This operation is not processed')
-    };
+    $gameData = [];
+    
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
+        $gameData[] = match ($game) {
+            BRAIN_CALC => getBrainCalcData(),
+            BRAIN_GCD => getBrainGCDData(),
+            BRAIN_EVEN => getBrainEvenData(),
+            BRAIN_PRIME => getBrainPrimeData(),
+            BRAIN_PROGRESSION => getBrainProgressionData(),
+            default => throw new \Exception('This operation is not processed')
+        };
+    }
+
+    return $gameData;
+    
 }
 
 function play(array $gameData): bool

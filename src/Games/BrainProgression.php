@@ -2,6 +2,7 @@
 
 namespace BrainGames\Games\BrainProgression;
 
+use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\startGame;
 
 use const BrainGames\Engine\ROUND_COUNT;
@@ -15,19 +16,13 @@ function startBrainProgression(): void
 
 function getBrainProgressionData(): array
 {
-    $gameData = [];
+    $progressionLength = rand(5, 10);
+    $increment = rand(2, 10);
+    $excludedNumberIndex = rand(0, $progressionLength - 1);
+    $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
+    $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
 
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $progressionLength = rand(5, 10);
-        $increment = rand(2, 10);
-        $excludedNumberIndex = rand(0, $progressionLength - 1);
-        $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
-        $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
-
-        $gameData[] = [$progression, $excludedNumber];
-    }
-
-    return $gameData;
+    return [$progression, $excludedNumber];
 }
 
 function getProgression(int $progressionLength, int $excludeNumberIndex, int $increment): array

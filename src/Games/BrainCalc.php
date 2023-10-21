@@ -15,16 +15,11 @@ function startBrainCalc(): void
 
 function getBrainCalcData(): array
 {
-    $gameData = [];
+    $expression = getExpression();
+    $result = calcExpression($expression);
 
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $expression = getExpression();
-        $result = calcExpression($expression);
 
-        $gameData[] = [$expression, $result];
-    }
-
-    return $gameData;
+    return [$expression, $result];
 }
 
 function getExpression(): array

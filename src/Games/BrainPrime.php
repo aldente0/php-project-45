@@ -15,16 +15,10 @@ function startBrainPrime(): void
 
 function getBrainPrimeData(): array
 {
-    $gameData = [];
+    $number = rand(2, 50);
+    $isPrime = isPrime($number) ? 'yes' : 'no';
 
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $number = rand(2, 50);
-        $isPrime = isPrime($number) ? 'yes' : 'no';
-
-        $gameData[] = [$number, $isPrime];
-    }
-
-    return $gameData;
+    return [$number, $isPrime];
 }
 
 function isPrime(int $number): bool
