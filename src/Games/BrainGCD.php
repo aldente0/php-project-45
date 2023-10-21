@@ -3,8 +3,16 @@
 namespace BrainGames\Games\BrainGCD;
 
 use function BrainGames\Engine\getRandomNumber;
+use function BrainGames\Engine\startGame;
 
 use const BrainGames\Engine\ROUND_COUNT;
+
+const BRAIN_GCD = 'brain-gcd';
+
+function startBrainGCD(): void
+{
+    startGame(BRAIN_GCD);
+}
 
 function getGCD(int $num1, int $num2): int
 {

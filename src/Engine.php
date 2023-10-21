@@ -10,11 +10,11 @@ use function BrainGames\Games\BrainPrime\getBrainPrimeData;
 use function BrainGames\Games\BrainGCD\getBrainGCDData;
 use function BrainGames\Games\BrainEven\getBrainEvenData;
 
-const BRAIN_CALC = 'brain-calc';
-const BRAIN_PRIME = 'brain-prime';
-const BRAIN_GCD = 'brain-gcd';
-const BRAIN_PROGRESSION = 'brain-progression';
-const BRAIN_EVEN = 'brain-even';
+use const BrainGames\Games\BrainCalc\BRAIN_CALC;
+use const BrainGames\Games\BrainProgression\BRAIN_PROGRESSION;
+use const BrainGames\Games\BrainPrime\BRAIN_PRIME;
+use const BrainGames\Games\BrainGCD\BRAIN_GCD;
+use const BrainGames\Games\BrainEven\BRAIN_EVEN;
 
 const BRAIN_CALC_RULES = 'What is the result of the expression?';
 const BRAIN_PRIME_RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';

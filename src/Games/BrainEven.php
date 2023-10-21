@@ -3,8 +3,16 @@
 namespace BrainGames\Games\BrainEven;
 
 use function BrainGames\Engine\getRandomNumber;
+use function BrainGames\Engine\startGame;
 
 use const BrainGames\Engine\ROUND_COUNT;
+
+const BRAIN_EVEN = 'brain-even';
+
+function startBrainEven(): void
+{
+    startGame(BRAIN_EVEN);
+}
 
 function getBrainEvenData(): array
 {
