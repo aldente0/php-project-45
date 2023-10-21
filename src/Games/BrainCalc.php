@@ -2,7 +2,6 @@
 
 namespace BrainGames\Games\BrainCalc;
 
-use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\startGame;
 use const BrainGames\Engine\ROUND_COUNT;
 
@@ -29,7 +28,7 @@ function getBrainCalcData(): array
 
 function getExpression(): array
 {
-    $firstOperand = getRandomNumber();
+    $firstOperand = rand(0, 50);
     $operation = getRandomOperation();
     $secondOperand = getSecondOperand($operation);
 
@@ -50,7 +49,7 @@ function calcExpression(array $expression): int
 
 function getSecondOperand(string $operation): int
 {
-    return $operation === '*' ? getRandomNumber(0, 10) : getRandomNumber();
+    return $operation === '*' ? rand(0, 10) : rand(0, 50);
 }
 
 function getRandomOperation(): string

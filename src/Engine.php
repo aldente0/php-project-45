@@ -96,9 +96,9 @@ function showResult(bool $isWonGame, string $player): void
 function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer): bool
 {
     $question = createQuestion($forCreateQuestion);
-    printQuestion($question);
-    $answer = answerTheQuestion();
-    $isCorrectAnswer = checkAnswer($expectedAnswer, $answer);
+    line("Question: {$question}");
+    $answer = prompt('Your answer');
+    $isCorrectAnswer = $expectedAnswer == $answer ? true : false;
 
     if ($isCorrectAnswer) {
         line('Correct!');
@@ -109,16 +109,6 @@ function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer
     return $isCorrectAnswer;
 }
 
-function getRandomNumber(int $min = 0, int $max = 50): int
-{
-    return rand($min, $max);
-}
-
-function printQuestion(int|string $string): void
-{
-    line("Question: {$string}");
-}
-
 function createQuestion(int|array ...$args): string
 {
     if (is_array($args[0])) {
@@ -126,19 +116,4 @@ function createQuestion(int|array ...$args): string
     }
 
     return implode(' ', $args);
-}
-
-function answerTheQuestion(): string
-{
-    return prompt('Your answer');
-}
-
-function isGameGoingOn(int $turn, bool $isCorrectAnswer): bool
-{
-    return $turn < ROUND_COUNT && $isCorrectAnswer;
-}
-
-function checkAnswer(string|int $expected, string|int $actual): bool
-{
-    return $expected == $actual ? true : false;
 }
