@@ -59,7 +59,7 @@ function showRules(string $game): void
 function getGameData(string $game): array
 {
     $gameData = [];
-    
+
     for ($i = 0; $i < ROUND_COUNT; $i++) {
         $gameData[] = match ($game) {
             BRAIN_CALC => getBrainCalcData(),
@@ -72,7 +72,6 @@ function getGameData(string $game): array
     }
 
     return $gameData;
-    
 }
 
 function play(array $gameData): bool
