@@ -4,8 +4,6 @@ namespace BrainGames\Games\BrainGCD;
 
 use function BrainGames\Engine\startGame;
 
-use const BrainGames\Engine\ROUND_COUNT;
-
 const BRAIN_GCD = 'brain-gcd';
 
 function startBrainGCD(): void
