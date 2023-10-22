@@ -2,7 +2,6 @@
 
 namespace BrainGames\Games\BrainProgression;
 
-use function BrainGames\Engine\getRandomNumber;
 use function BrainGames\Engine\startGame;
 
 use const BrainGames\Engine\ROUND_COUNT;
