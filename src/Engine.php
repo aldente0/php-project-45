@@ -15,7 +15,6 @@ use const BrainGames\Games\BrainProgression\BRAIN_PROGRESSION;
 use const BrainGames\Games\BrainPrime\BRAIN_PRIME;
 use const BrainGames\Games\BrainGCD\BRAIN_GCD;
 use const BrainGames\Games\BrainEven\BRAIN_EVEN;
-
 use const BrainGames\Games\BrainCalc\BRAIN_CALC_RULES;
 use const BrainGames\Games\BrainProgression\BRAIN_PROGRESSION_RULES;
 use const BrainGames\Games\BrainPrime\BRAIN_PRIME_RULES;
