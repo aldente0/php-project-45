@@ -5,6 +5,7 @@ namespace BrainGames\Games\BrainCalc;
 use function BrainGames\Engine\startGame;
 
 const BRAIN_CALC = 'brain-calc';
+const BRAIN_CALC_RULES = 'What is the result of the expression?';
 
 function startBrainCalc(): void
 {

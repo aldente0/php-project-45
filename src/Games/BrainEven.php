@@ -5,6 +5,7 @@ namespace BrainGames\Games\BrainEven;
 use function BrainGames\Engine\startGame;
 
 const BRAIN_EVEN = 'brain-even';
+const BRAIN_EVEN_RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 function startBrainEven(): void
 {

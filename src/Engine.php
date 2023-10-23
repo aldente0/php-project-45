@@ -16,11 +16,11 @@ use const BrainGames\Games\BrainPrime\BRAIN_PRIME;
 use const BrainGames\Games\BrainGCD\BRAIN_GCD;
 use const BrainGames\Games\BrainEven\BRAIN_EVEN;
 
-const BRAIN_CALC_RULES = 'What is the result of the expression?';
-const BRAIN_PRIME_RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const BRAIN_GCD_RULES = 'Find the greatest common divisor of given numbers.';
-const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
-const BRAIN_EVEN_RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
+use const BrainGames\Games\BrainCalc\BRAIN_CALC_RULES;
+use const BrainGames\Games\BrainProgression\BRAIN_PROGRESSION_RULES;
+use const BrainGames\Games\BrainPrime\BRAIN_PRIME_RULES;
+use const BrainGames\Games\BrainGCD\BRAIN_GCD_RULES;
+use const BrainGames\Games\BrainEven\BRAIN_EVEN_RULES;
 
 const ROUND_COUNT = 3;
 

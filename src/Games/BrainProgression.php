@@ -5,6 +5,7 @@ namespace BrainGames\Games\BrainProgression;
 use function BrainGames\Engine\startGame;
 
 const BRAIN_PROGRESSION = 'brain-progression';
+const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
 
 function startBrainProgression(): void
 {

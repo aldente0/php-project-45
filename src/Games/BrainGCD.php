@@ -5,6 +5,7 @@ namespace BrainGames\Games\BrainGCD;
 use function BrainGames\Engine\startGame;
 
 const BRAIN_GCD = 'brain-gcd';
+const BRAIN_GCD_RULES = 'Find the greatest common divisor of given numbers.';
 
 function startBrainGCD(): void
 {
