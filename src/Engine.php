@@ -7,7 +7,7 @@ use function cli\prompt;
 
 const ROUND_COUNT = 3;
 
-function startGame(string $gameRules, $getRoundData): void
+function startGame(string $gameRules, callable $getRoundData): void
 {
     $player = welcomePlayer();
     line($gameRules);
@@ -27,7 +27,7 @@ function welcomePlayer(): string
     return $name;
 }
 
-function getGameData($getRoundData): array
+function getGameData(callable $getRoundData): array
 {
     $gameData = [];
 

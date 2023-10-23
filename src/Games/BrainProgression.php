@@ -9,7 +9,7 @@ const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
 function startBrainProgression(): void
 {
     startGame(
-        BRAIN_PROGRESSION_RULES, 
+        BRAIN_PROGRESSION_RULES,
         function () {
             $progressionLength = rand(5, 10);
             $increment = rand(2, 10);
