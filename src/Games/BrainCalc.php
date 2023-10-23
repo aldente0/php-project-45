@@ -4,21 +4,20 @@ namespace BrainGames\Games\BrainCalc;
 
 use function BrainGames\Engine\startGame;
 
-const BRAIN_CALC = 'brain-calc';
 const BRAIN_CALC_RULES = 'What is the result of the expression?';
 
 function startBrainCalc(): void
 {
-    startGame(BRAIN_CALC);
-}
-
-function getBrainCalcData(): array
-{
-    $expression = getExpression();
-    $result = calcExpression($expression);
+    startGame(
+        BRAIN_CALC_RULES,
+        function () {
+            $expression = getExpression();
+            $result = calcExpression($expression);
 
 
-    return [$expression, $result];
+            return [$expression, $result];
+        }
+    );
 }
 
 function getExpression(): array

@@ -4,23 +4,22 @@ namespace BrainGames\Games\BrainGCD;
 
 use function BrainGames\Engine\startGame;
 
-const BRAIN_GCD = 'brain-gcd';
 const BRAIN_GCD_RULES = 'Find the greatest common divisor of given numbers.';
 
 function startBrainGCD(): void
 {
-    startGame(BRAIN_GCD);
-}
+    startGame(
+        BRAIN_GCD_RULES,
+        function () {
+            $multiplier = rand(2, 5);
+            $firstNumber = rand(1, 50) * $multiplier;
+            $secondNumber = rand(1, 50) * $multiplier;
+            $numbers = [$secondNumber, $firstNumber];
+            $gcd = getGCD($firstNumber, $secondNumber);
 
-function getBrainGCDData(): array
-{
-    $multiplier = rand(2, 5);
-    $firstNumber = rand(1, 50) * $multiplier;
-    $secondNumber = rand(1, 50) * $multiplier;
-    $numbers = [$secondNumber, $firstNumber];
-    $gcd = getGCD($firstNumber, $secondNumber);
-
-    return [$numbers, $gcd];
+            return [$numbers, $gcd];
+        }
+    );
 }
 
 function getGCD(int $num1, int $num2): int

@@ -4,23 +4,22 @@ namespace BrainGames\Games\BrainProgression;
 
 use function BrainGames\Engine\startGame;
 
-const BRAIN_PROGRESSION = 'brain-progression';
 const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
 
 function startBrainProgression(): void
 {
-    startGame(BRAIN_PROGRESSION);
-}
+    startGame(
+        BRAIN_PROGRESSION_RULES, 
+        function () {
+            $progressionLength = rand(5, 10);
+            $increment = rand(2, 10);
+            $excludedNumberIndex = rand(0, $progressionLength - 1);
+            $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
+            $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
 
-function getBrainProgressionData(): array
-{
-    $progressionLength = rand(5, 10);
-    $increment = rand(2, 10);
-    $excludedNumberIndex = rand(0, $progressionLength - 1);
-    $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
-    $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
-
-    return [$progression, $excludedNumber];
+            return [$progression, $excludedNumber];
+        }
+    );
 }
 
 function getProgression(int $progressionLength, int $excludeNumberIndex, int $increment): array

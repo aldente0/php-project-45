@@ -4,20 +4,19 @@ namespace BrainGames\Games\BrainPrime;
 
 use function BrainGames\Engine\startGame;
 
-const BRAIN_PRIME = 'brain-prime';
 const BRAIN_PRIME_RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 function startBrainPrime(): void
 {
-    startGame(BRAIN_PRIME);
-}
+    startGame(
+        BRAIN_PRIME_RULES,
+        function () {
+            $number = rand(2, 50);
+            $isPrime = isPrime($number) ? 'yes' : 'no';
 
-function getBrainPrimeData(): array
-{
-    $number = rand(2, 50);
-    $isPrime = isPrime($number) ? 'yes' : 'no';
-
-    return [$number, $isPrime];
+            return [$number, $isPrime];
+        }
+    );
 }
 
 function isPrime(int $number): bool

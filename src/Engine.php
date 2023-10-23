@@ -4,31 +4,15 @@ namespace BrainGames\Engine;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Games\BrainCalc\getBrainCalcData;
-use function BrainGames\Games\BrainProgression\getBrainProgressionData;
-use function BrainGames\Games\BrainPrime\getBrainPrimeData;
-use function BrainGames\Games\BrainGCD\getBrainGCDData;
-use function BrainGames\Games\BrainEven\getBrainEvenData;
-
-use const BrainGames\Games\BrainCalc\BRAIN_CALC;
-use const BrainGames\Games\BrainProgression\BRAIN_PROGRESSION;
-use const BrainGames\Games\BrainPrime\BRAIN_PRIME;
-use const BrainGames\Games\BrainGCD\BRAIN_GCD;
-use const BrainGames\Games\BrainEven\BRAIN_EVEN;
-use const BrainGames\Games\BrainCalc\BRAIN_CALC_RULES;
-use const BrainGames\Games\BrainProgression\BRAIN_PROGRESSION_RULES;
-use const BrainGames\Games\BrainPrime\BRAIN_PRIME_RULES;
-use const BrainGames\Games\BrainGCD\BRAIN_GCD_RULES;
-use const BrainGames\Games\BrainEven\BRAIN_EVEN_RULES;
 
 const ROUND_COUNT = 3;
 
-function startGame(string $game): void
+function startGame(string $gameRules, $getRoundData): void
 {
     $player = welcomePlayer();
-    showRules($game);
+    line($gameRules);
 
-    $gameData = getGameData($game);
+    $gameData = getGameData($getRoundData);
     $isWonGame = play($gameData);
 
     showResult($isWonGame, $player);
@@ -43,31 +27,12 @@ function welcomePlayer(): string
     return $name;
 }
 
-function showRules(string $game): void
-{
-    match ($game) {
-        BRAIN_CALC => line(BRAIN_CALC_RULES),
-        BRAIN_GCD => line(BRAIN_GCD_RULES),
-        BRAIN_EVEN => line(BRAIN_EVEN_RULES),
-        BRAIN_PRIME => line(BRAIN_PRIME_RULES),
-        BRAIN_PROGRESSION => line(BRAIN_PROGRESSION_RULES),
-        default => throw new \Exception('This operation is not processed')
-    };
-}
-
-function getGameData(string $game): array
+function getGameData($getRoundData): array
 {
     $gameData = [];
 
     for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $gameData[] = match ($game) {
-            BRAIN_CALC => getBrainCalcData(),
-            BRAIN_GCD => getBrainGCDData(),
-            BRAIN_EVEN => getBrainEvenData(),
-            BRAIN_PRIME => getBrainPrimeData(),
-            BRAIN_PROGRESSION => getBrainProgressionData(),
-            default => throw new \Exception('This operation is not processed')
-        };
+        $gameData[] = $getRoundData();
     }
 
     return $gameData;
@@ -88,16 +53,6 @@ function play(array $gameData): bool
     return $isWonGame;
 }
 
-function showResult(bool $isWonGame, string $player): void
-{
-
-    if ($isWonGame) {
-        line('Congratulations, %s!', $player);
-    } else {
-        line("Let's try again, %s!", $player);
-    }
-}
-
 function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer): bool
 {
     $question = createQuestion($forCreateQuestion);
@@ -113,6 +68,17 @@ function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer
 
     return $isCorrectAnswer;
 }
+
+function showResult(bool $isWonGame, string $player): void
+{
+
+    if ($isWonGame) {
+        line('Congratulations, %s!', $player);
+    } else {
+        line("Let's try again, %s!", $player);
+    }
+}
+
 
 function createQuestion(int|array ...$args): string
 {
