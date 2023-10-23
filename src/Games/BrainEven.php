@@ -13,7 +13,7 @@ function startBrainEven(): void
         function () {
             $number = rand(0, 50);
             $isEven = isEven($number) ? 'yes' : 'no';
-    
+
             return [$number, $isEven];
         }
     );
