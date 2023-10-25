@@ -24,7 +24,7 @@ function getExpression(): array
 {
     $firstOperand = rand(0, 50);
     $operation = getRandomOperation();
-    $secondOperand = rand(0, 50) 
+    $secondOperand = rand(0, 50);
 
     return [$firstOperand, $operation, $secondOperand];
 }
