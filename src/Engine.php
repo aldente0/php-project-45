@@ -55,7 +55,7 @@ function play(array $gameData): bool
 
 function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer): bool
 {
-    $question = is_array($forCreateQuestion)? implode(' ', $forCreateQuestion) : $forCreateQuestion;
+    $question = is_array($forCreateQuestion) ? implode(' ', $forCreateQuestion) : $forCreateQuestion;
     line("Question: {$question}");
     $answer = prompt('Your answer');
     $isCorrectAnswer = $expectedAnswer == $answer ? true : false;
