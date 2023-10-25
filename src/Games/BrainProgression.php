@@ -10,35 +10,31 @@ function startBrainProgression(): void
 {
     startGame(
         BRAIN_PROGRESSION_RULES,
-        function () {
-            $progressionLength = rand(5, 10);
-            $increment = rand(2, 10);
-            $excludedNumberIndex = rand(0, $progressionLength - 1);
-            $progression = getProgression($progressionLength, $excludedNumberIndex, $increment);
-            $excludedNumber = getExcludedNumber($progression, $excludedNumberIndex, $increment);
-
-            return [$progression, $excludedNumber];
-        }
+        fn () => getProgressionAndExcludedNumber()
     );
 }
 
-function getProgression(int $progressionLength, int $excludeNumberIndex, int $increment): array
+function getProgressionAndExcludedNumber(): array
 {
+    $excludedNumber = 0;
+    $progressionLength = rand(5, 10);
+    $increment = rand(2, 10);
+    $excludedNumberIndex = rand(0, $progressionLength - 1);
     $last = rand(1, 20);
     $progression = [];
 
     for ($i = 0; $i < $progressionLength; $i++) {
         $last += $increment;
 
-        if ($i === $excludeNumberIndex) {
+        if ($i === $excludedNumberIndex) {
             $progression[$i] = '..';
-            continue;
+            $excludedNumber = $last;
+        } else {
+            $progression[$i] = (string)$last;
         }
-
-        $progression[$i] = (string)$last;
     }
 
-    return $progression;
+    return [$progression, $excludedNumber];
 }
 
 function getExcludedNumber(array $progression, int $excludedNumberIndex, int $increment): int
