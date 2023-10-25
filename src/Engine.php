@@ -78,4 +78,3 @@ function showResult(bool $isWonGame, string $player): void
         line("Let's try again, %s!", $player);
     }
 }
-
