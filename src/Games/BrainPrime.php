@@ -11,7 +11,7 @@ function startBrainPrime(): void
     startGame(
         BRAIN_PRIME_RULES,
         function () {
-            $number = rand(2, 50);
+            $number = rand(1, 50);
             $isPrime = isPrime($number) ? 'yes' : 'no';
 
             return [$number, $isPrime];
