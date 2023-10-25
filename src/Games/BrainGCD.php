@@ -11,7 +11,8 @@ function startBrainGCD(): void
     startGame(
         BRAIN_GCD_RULES,
         function () {
-            $multiplier = rand(2, 5);
+            // without $multiplier, gcd is often equal to 1
+            $multiplier = rand(1, 10);
             $firstNumber = rand(1, 50) * $multiplier;
             $secondNumber = rand(1, 50) * $multiplier;
             $numbers = [$secondNumber, $firstNumber];
