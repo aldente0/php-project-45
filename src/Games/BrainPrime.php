@@ -21,6 +21,10 @@ function startBrainPrime(): void
 
 function isPrime(int $number): bool
 {
+    if ($number === 1) {
+        return false;
+    }
+
     $numberHalf = ceil($number / 2);
 
     for ($i = 2; $i <= $numberHalf; $i++) {
