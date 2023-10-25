@@ -24,7 +24,7 @@ function getExpression(): array
 {
     $firstOperand = rand(0, 50);
     $operation = getRandomOperation();
-    $secondOperand = getSecondOperand($operation);
+    $secondOperand = rand(0, 50) 
 
     return [$firstOperand, $operation, $secondOperand];
 }
@@ -39,11 +39,6 @@ function calcExpression(array $expression): int
         '*' => $firstOperand * $secondOperand,
         default => throw new \Exception('This operation is not processed')
     };
-}
-
-function getSecondOperand(string $operation): int
-{
-    return $operation === '*' ? rand(0, 10) : rand(0, 50);
 }
 
 function getRandomOperation(): string
