@@ -79,12 +79,3 @@ function showResult(bool $isWonGame, string $player): void
     }
 }
 
-
-function createQuestion(int|array ...$args): string
-{
-    if (is_array($args[0])) {
-        $args = [...$args[0]];
-    }
-
-    return implode(' ', $args);
-}
