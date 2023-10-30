@@ -16,7 +16,7 @@ function startBrainProgression(): void
 
 function getProgressionAndExcludedNumber(): array
 {
-    $excludedNumber = 0;
+    $progressionSkip = '..';
     $progressionLength = rand(5, 10);
     $increment = rand(2, 10);
     $excludedNumberIndex = rand(0, $progressionLength - 1);
@@ -27,12 +27,13 @@ function getProgressionAndExcludedNumber(): array
         $last += $increment;
 
         if ($i === $excludedNumberIndex) {
-            $progression[$i] = '..';
-            $excludedNumber = $last;
+            $progression[$i] = $progressionSkip;
         } else {
             $progression[$i] = (string)$last;
         }
     }
+
+    $excludedNumber = $progression[array_search($progressionSkip, $progression) - 1] + $increment;
 
     return [$progression, $excludedNumber];
 }
