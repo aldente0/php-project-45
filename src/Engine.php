@@ -20,35 +20,25 @@ function startGame(string $gameRules, callable $getRoundData): void
         $gameData[] = $getRoundData();
     }
 
-    $isWonGame = true;
+    $isContinueGame = true;
 
     foreach ($gameData as [$forCreateQuestion, $expectedAnswer]) {
-        $isWonGame = startNextRound($forCreateQuestion, $expectedAnswer);
-
-        if (! $isWonGame) {
+        $question = is_array($forCreateQuestion) ? implode(' ', $forCreateQuestion) : $forCreateQuestion;
+        line("Question: {$question}");
+        $answer = prompt('Your answer');
+        $isContinueGame = $expectedAnswer == $answer ? true : false;
+    
+        if (! $isContinueGame) {
+            line('Correct!');
+        } else {
+            line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expectedAnswer);
             break;
         }
     }
 
-    if ($isWonGame) {
+    if ($isContinueGame) {
         line('Congratulations, %s!', $playerName);
     } else {
         line("Let's try again, %s!", $playerName);
     }
-}
-
-function startNextRound(int|array $forCreateQuestion, int|string $expectedAnswer): bool
-{
-    $question = is_array($forCreateQuestion) ? implode(' ', $forCreateQuestion) : $forCreateQuestion;
-    line("Question: {$question}");
-    $answer = prompt('Your answer');
-    $isContinueGame = $expectedAnswer == $answer ? true : false;
-
-    if (! $isContinueGame) {
-        line('Correct!');
-    } else {
-        line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expectedAnswer);
-    }
-
-    return $isContinueGame;
 }
