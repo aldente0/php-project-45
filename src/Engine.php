@@ -27,7 +27,7 @@ function startGame(string $gameRules, callable $getRoundData): void
         line("Question: {$question}");
         $answer = prompt('Your answer');
         $isContinueGame = $expectedAnswer == $answer ? true : false;
-    
+
         if ($isContinueGame) {
             line('Correct!');
         } else {

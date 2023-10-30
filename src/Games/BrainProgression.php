@@ -33,7 +33,7 @@ function getProgressionAndExcludedNumber(): array
         }
     }
 
-    $excludedNumber = $excludedNumberIndex > 0 ? 
+    $excludedNumber = $excludedNumberIndex > 0 ?
         $progression[$excludedNumberIndex - 1] + $increment :
         $progression[$excludedNumberIndex + 1] - $increment;
 
