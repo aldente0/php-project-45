@@ -36,16 +36,3 @@ function getProgressionAndExcludedNumber(): array
 
     return [$progression, $excludedNumber];
 }
-
-function getExcludedNumber(array $progression, int $excludedNumberIndex, int $increment): int
-{
-    $excludedNumber = 0;
-
-    if ($excludedNumberIndex === 0) {
-        $excludedNumber = (int)$progression[$excludedNumberIndex + 1] - $increment;
-    } else {
-        $excludedNumber = (int)$progression[$excludedNumberIndex - 1] + $increment;
-    }
-
-    return $excludedNumber;
-}
