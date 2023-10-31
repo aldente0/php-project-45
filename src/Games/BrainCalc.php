@@ -20,13 +20,13 @@ function startBrainCalc(): void
     );
 }
 
-function getExpression(): array
+function getExpression(): string
 {
     $firstOperand = rand(0, 50);
     $operation = getRandomOperation();
     $secondOperand = rand(0, 50);
 
-    return [$firstOperand, $operation, $secondOperand];
+    return implode(' ', [$firstOperand, $operation, $secondOperand]);
 }
 
 function calcExpression(array $expression): int

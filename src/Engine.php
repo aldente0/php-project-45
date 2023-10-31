@@ -14,13 +14,7 @@ function startGame(string $gameRules, callable $getRoundData): void
     line("Hello, %s", $playerName);
     line($gameRules);
 
-    $gameData = [];
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
-        $gameData[] = $getRoundData();
-    }
-
-    foreach ($gameData as [$question, $expectedAnswer]) {
+    foreach ($getRoundData() as [$question, $expectedAnswer]) {
         line("Question: {$question}");
         $answer = prompt('Your answer');
 
