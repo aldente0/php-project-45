@@ -29,9 +29,9 @@ function getExpression(): string
     return implode(' ', [$firstOperand, $operation, $secondOperand]);
 }
 
-function calcExpression(array $expression): int
+function calcExpression(string $expression): int
 {
-    [$firstOperand, $operation, $secondOperand] = $expression;
+    [$firstOperand, $operation, $secondOperand] = explode(' ', $expression);
 
     return match ($operation) {
         '+' => $firstOperand + $secondOperand,
