@@ -13,7 +13,7 @@ function startBrainGCD(): void
         function () {
             $firstNumber = rand(21, 40);
             $secondNumber = rand(1, 20);
-            $numbers = [$secondNumber, $firstNumber];
+            $numbers = implode(' ', [$secondNumber, $firstNumber]);
             $gcd = getGCD($firstNumber, $secondNumber);
 
             return [$numbers, $gcd];
