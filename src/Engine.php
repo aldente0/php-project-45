@@ -14,11 +14,12 @@ function startGame(string $gameRules, callable $getRoundData): void
     line("Hello, %s", $playerName);
     line($gameRules);
 
-    foreach ($getRoundData() as [$question, $expectedAnswer]) {
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
+        [$question, $expectedAnswer] = $getRoundData();
         line("Question: {$question}");
         $answer = prompt('Your answer');
 
-        if (! $expectedAnswer == $answer) {
+        if ((string)$expectedAnswer !== $answer) {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expectedAnswer);
             line("Let's try again, %s!", $playerName);
             return;
