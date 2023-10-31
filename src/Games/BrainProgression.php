@@ -34,5 +34,5 @@ function getProgressionAndExcludedNumber(): array
 
     $progressionStr = implode(' ', $progression);
 
-    return [$$progressionStr, $excludedNumber];
+    return [$progressionStr, $excludedNumber];
 }
