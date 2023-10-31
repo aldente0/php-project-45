@@ -22,9 +22,7 @@ function getProgressionAndExcludedNumber(): array
     $progression = [];
 
     for ($i = 0; $i < $progressionLength; $i++) {
-        $last += $increment;
-
-        $progression[$i] = (string)$last;
+        $progression[] = (string)($last + $increment * $i);
     }
 
     $excludedNumberIndex = rand(0, $progressionLength - 1);
