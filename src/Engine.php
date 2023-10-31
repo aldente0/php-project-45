@@ -20,25 +20,18 @@ function startGame(string $gameRules, callable $getRoundData): void
         $gameData[] = $getRoundData();
     }
 
-    $isContinueGame = true;
-
-    foreach ($gameData as [$forCreateQuestion, $expectedAnswer]) {
-        $question = is_array($forCreateQuestion) ? implode(' ', $forCreateQuestion) : $forCreateQuestion;
+    foreach ($gameData as [$question, $expectedAnswer]) {
         line("Question: {$question}");
         $answer = prompt('Your answer');
-        $isContinueGame = $expectedAnswer == $answer ? true : false;
 
-        if ($isContinueGame) {
-            line('Correct!');
-        } else {
+        if (! $expectedAnswer == $answer) {
             line("'%s' is wrong answer ;(. Correct answer was '%s'.", $answer, $expectedAnswer);
-            break;
+            line("Let's try again, %s!", $playerName);
+            return;
         }
+
+        line('Correct!');
     }
 
-    if ($isContinueGame) {
-        line('Congratulations, %s!', $playerName);
-    } else {
-        line("Let's try again, %s!", $playerName);
-    }
+    line('Congratulations, %s!', $playerName);
 }
