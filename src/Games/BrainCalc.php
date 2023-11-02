@@ -34,9 +34,9 @@ function calcExpression(string $expression): int
     [$firstOperand, $operation, $secondOperand] = explode(' ', $expression);
 
     return match ($operation) {
-        '+' => $firstOperand + $secondOperand,
-        '-' => $firstOperand - $secondOperand,
-        '*' => $firstOperand * $secondOperand,
+        '+' => (int)$firstOperand + (int)$secondOperand,
+        '-' => (int)$firstOperand - (int)$secondOperand,
+        '*' => (int)$firstOperand * (int)$secondOperand,
         default => throw new \Exception('This operation is not processed')
     };
 }
