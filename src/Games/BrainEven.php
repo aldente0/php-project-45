@@ -6,7 +6,7 @@ use function BrainGames\Engine\startGame;
 
 const BRAIN_EVEN_RULES = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-function startBrainEven(): void
+function startApp(): void
 {
     startGame(
         BRAIN_EVEN_RULES,

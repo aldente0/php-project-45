@@ -6,7 +6,7 @@ use function BrainGames\Engine\startGame;
 
 const BRAIN_PRIME_RULES = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-function startBrainPrime(): void
+function startApp(): void
 {
     startGame(
         BRAIN_PRIME_RULES,

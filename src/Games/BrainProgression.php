@@ -6,7 +6,7 @@ use function BrainGames\Engine\startGame;
 
 const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
 
-function startBrainProgression(): void
+function startApp(): void
 {
     startGame(
         BRAIN_PROGRESSION_RULES,

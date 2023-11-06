@@ -6,7 +6,7 @@ use function BrainGames\Engine\startGame;
 
 const BRAIN_CALC_RULES = 'What is the result of the expression?';
 
-function startBrainCalc(): void
+function startApp(): void
 {
     startGame(
         BRAIN_CALC_RULES,

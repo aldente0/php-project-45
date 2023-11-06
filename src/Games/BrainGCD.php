@@ -6,7 +6,7 @@ use function BrainGames\Engine\startGame;
 
 const BRAIN_GCD_RULES = 'Find the greatest common divisor of given numbers.';
 
-function startBrainGCD(): void
+function startApp(): void
 {
     startGame(
         BRAIN_GCD_RULES,
