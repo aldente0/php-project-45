@@ -4,12 +4,12 @@ namespace BrainGames\Games\BrainProgression;
 
 use function BrainGames\Engine\startGame;
 
-const BRAIN_PROGRESSION_RULES = 'What number is missing in the progression?';
+const RULES = 'What number is missing in the progression?';
 
 function startApp(): void
 {
     startGame(
-        BRAIN_PROGRESSION_RULES,
+        RULES,
         fn () => getProgressionAndExcludedNumber()
     );
 }

@@ -4,12 +4,12 @@ namespace BrainGames\Games\BrainGCD;
 
 use function BrainGames\Engine\startGame;
 
-const BRAIN_GCD_RULES = 'Find the greatest common divisor of given numbers.';
+const RULES = 'Find the greatest common divisor of given numbers.';
 
 function startApp(): void
 {
     startGame(
-        BRAIN_GCD_RULES,
+        RULES,
         function () {
             $firstNumber = rand(21, 40);
             $secondNumber = rand(1, 20);

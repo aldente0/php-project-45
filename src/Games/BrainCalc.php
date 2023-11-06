@@ -4,12 +4,12 @@ namespace BrainGames\Games\BrainCalc;
 
 use function BrainGames\Engine\startGame;
 
-const BRAIN_CALC_RULES = 'What is the result of the expression?';
+const RULES = 'What is the result of the expression?';
 
 function startApp(): void
 {
     startGame(
-        BRAIN_CALC_RULES,
+        RULES,
         function () {
             $expression = getExpression();
             $result = calcExpression($expression);
