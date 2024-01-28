@@ -12,13 +12,9 @@ function startApp(): void
         RULES,
         function () {
             $number = rand(0, 50);
-            $isEven = isEven($number) ? 'yes' : 'no';
+            $isEven = $number % 2 === 0 ? 'yes' : 'no';
 
             return [$number, $isEven];
         }
     );
-}
-function isEven(int $number): bool
-{
-    return $number % 2 === 0;
 }
