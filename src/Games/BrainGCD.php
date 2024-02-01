@@ -16,7 +16,7 @@ function startApp(): void
             $numbers = implode(' ', [$secondNumber, $firstNumber]);
             $gcd = 1;
 
-            for ($i = ($firstNumber <= $secondNumber) ? $firstNumber : $secondNumber; $i > $gcd; $i--) {
+            for ($i = $secondNumber; $i > $gcd; $i--) {
                 if (($firstNumber % $i == 0) && ($secondNumber % $i == 0)) {
                     $gcd = $i;
                 }

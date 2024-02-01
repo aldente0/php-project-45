@@ -19,9 +19,9 @@ function startApp(): void
             $secondOperand = rand(0, 50);
 
             $expectedResult = match ($operation) {
-                '+' => (int)$firstOperand + (int)$secondOperand,
-                '-' => (int)$firstOperand - (int)$secondOperand,
-                '*' => (int)$firstOperand * (int)$secondOperand,
+                '+' => $firstOperand + $secondOperand,
+                '-' => $firstOperand - $secondOperand,
+                '*' => $firstOperand * $secondOperand,
                 default => throw new \Exception('This operation is not processed')
             };
 
