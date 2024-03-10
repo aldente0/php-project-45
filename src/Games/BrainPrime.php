@@ -12,20 +12,27 @@ function startApp(): void
         RULES,
         function () {
             $number = rand(1, 50);
-            $isPrime = 'yes';
-            if ($number === 1) {
-                $isPrime = 'no';
-            }
+            $expectedAnswer = isPrime($number) ? 'yes' : 'no';
 
-            $numberHalf = ceil($number / 2);
-
-            for ($i = 2; $i <= $numberHalf; $i++) {
-                if ($number % $i === 0) {
-                    $isPrime = 'no';
-                }
-            }
-
-            return [$number, $isPrime];
+            return [$number, $expectedAnswer];
         }
     );
+}
+
+function isPrime(int $number): bool
+{
+    $isPrime = true;
+    if ($number === 1) {
+        $isPrime = false;
+    }
+
+    $numberHalf = ceil($number / 2);
+
+    for ($i = 2; $i <= $numberHalf; $i++) {
+        if ($number % $i === 0) {
+            $isPrime = false;
+        }
+    }
+
+    return $isPrime;
 }
