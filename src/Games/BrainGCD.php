@@ -35,4 +35,3 @@ function getGCD(int $firstNumber, int $secondNumber): int
 
     return $gcd;
 }
-
