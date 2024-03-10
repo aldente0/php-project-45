@@ -11,18 +11,28 @@ function startApp(): void
     startGame(
         RULES,
         function () {
-            $firstNumber = rand(21, 40);
-            $secondNumber = rand(1, 20);
-            $numbers = implode(' ', [$secondNumber, $firstNumber]);
-            $gcd = 1;
+            $firstNumber = rand(1, 100);
+            $secondNumber = rand(1, 100);
 
-            for ($i = $secondNumber; $i > $gcd; $i--) {
-                if (($firstNumber % $i == 0) && ($secondNumber % $i == 0)) {
-                    $gcd = $i;
-                }
-            }
+            $numbers = implode(' ', [$secondNumber, $firstNumber]);
+            $gcd = getGCD($firstNumber, $secondNumber);
 
             return [$numbers, $gcd];
         }
     );
 }
+
+function getGCD(int $firstNumber, int $secondNumber): int
+{
+    $gcd = 1;
+    $minNumber = min($firstNumber, $secondNumber);
+
+    for ($i = $minNumber; $i > $gcd; $i--) {
+        if (($firstNumber % $i == 0) && ($secondNumber % $i == 0)) {
+            $gcd = $i;
+        }
+    }
+
+    return $gcd;
+}
+
